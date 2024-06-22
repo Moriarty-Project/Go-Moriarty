@@ -24,26 +24,24 @@ func (s *Sherlock) AssignNewUser(user *UserRecordings) {
 	s.trackingUser = user
 }
 
-// attempts to
-func (s *Sherlock) TrackUser(caching bool) (sitesFoundByKnown, sitesFoundByLikely, SitesFoundByPossible []string, err error) {
-	bufferSize := len(s.siteTesters) / 5
-	sitesFoundByKnown = make([]string, 0, bufferSize)
-	sitesFoundByLikely = make([]string, 0, bufferSize)
-	SitesFoundByPossible = make([]string, 0, bufferSize)
-	wg := sync.WaitGroup{}
+// get the results from the user as channels
+func (s *Sherlock) GetUserResults() (knownChan, likelyChan, possibleChan chan string, doneSignal chan bool) {
+	bufferSize := len(s.siteTesters)
+
+	knownChan = make(chan string, bufferSize)
+	likelyChan = make(chan string, bufferSize)
+	possibleChan = make(chan string, bufferSize)
+
+	wg := &sync.WaitGroup{}
 	wg.Add(len(s.siteTesters))
-	doneChan := make(chan bool, 1)
-	// add a little waiter function here
+	doneSignal = make(chan bool, 1)
 
-	knownChan := make(chan string, bufferSize)
-	likelyChan := make(chan string, bufferSize)
-	possibleChan := make(chan string, bufferSize)
-	errChan := make(chan error)
-
+	// get the important user info setup
 	user := s.trackingUser
 	knownNames := append(user.KnownEmails, user.KnownUsernames...)
 	likelyNames := append(user.LikelyEmails, user.LikelyUsernames...)
 	possibleNames := append(user.PossibleEmails, user.PossibleUsernames...)
+
 	// now, we go tracking.
 	fmt.Println("now starting the go routines")
 	for sutName, sut := range s.siteTesters {
@@ -53,45 +51,55 @@ func (s *Sherlock) TrackUser(caching bool) (sitesFoundByKnown, sitesFoundByLikel
 			// we arent checking nsfw sites this time
 		}
 		go func(sut *DataToUserTester, sutName string) {
-			if sut.TestSiteHasAny(caching, knownNames...) {
+			if sut.TestSiteHasAny(knownNames...) {
 				knownChan <- sutName
 			}
-			if sut.TestSiteHasAny(caching, likelyNames...) {
+			if sut.TestSiteHasAny(likelyNames...) {
 				likelyChan <- sutName
 			}
-			if sut.TestSiteHasAny(caching, possibleNames...) {
+			if sut.TestSiteHasAny(possibleNames...) {
 				possibleChan <- sutName
 			}
 			wg.Done()
 		}(sut, sutName)
 	}
 	fmt.Println("all routines have been started!")
+
+	// add a little waiter function here. This is answers that we're done.
 	go func() {
 		wg.Wait()
-		fmt.Println("all go routines have finished!")
-		doneChan <- true
+		fmt.Println("all go routines have finished!\n ")
+		doneSignal <- true
 	}()
-	fmt.Println("waitgroup is waiting now!")
-	// next we do need to get this data into the answer arrays...
-	for {
-		select {
-		case errResult := <-errChan:
-			err = errResult
-			return
-		case know := <-knownChan:
-			sitesFoundByKnown = append(sitesFoundByKnown, know)
-		case likely := <-likelyChan:
-			sitesFoundByLikely = append(sitesFoundByLikely, likely)
-		case possible := <-possibleChan:
-			SitesFoundByPossible = append(SitesFoundByPossible, possible)
-		}
-		if len(knownChan) == 0 && len(likelyChan) == 0 && len(possibleChan) == 0 && len(doneChan) == 1 {
-			fmt.Println("done!\n ")
-			return
-		}
-	}
+	fmt.Println("returning function")
+	return knownChan, likelyChan, possibleChan, doneSignal
 }
 
+// attempts to
+func (s *Sherlock) TrackUser() (sitesFoundByKnown, sitesFoundByLikely, sitesFoundByPossible []string) {
+	known, likely, possible, done := s.GetUserResults()
+	<-done
+	// we start it right away, then just wait till it's done.
+	sitesFoundByKnown = make([]string, len(known))
+	sitesFoundByLikely = make([]string, len(likely))
+	sitesFoundByPossible = make([]string, len(possible))
+	wg := &sync.WaitGroup{}
+	wg.Add(3)
+	// none of these interact with each other... so we could try paralleling them...
+	WriteAll(known, sitesFoundByKnown, wg)
+	WriteAll(likely, sitesFoundByLikely, wg)
+	WriteAll(possible, sitesFoundByPossible, wg)
+	wg.Wait()
+	return sitesFoundByKnown, sitesFoundByLikely, sitesFoundByPossible
+}
+
+// writes all new data to the array!
+func WriteAll(from chan string, to []string, wg *sync.WaitGroup) {
+	for i := 0; i < len(to) && len(from) != 0; i++ {
+		to[i] = <-from
+	}
+	wg.Done()
+}
 func LoadAllSiteUserTesters(filePath string) (map[string]*DataToUserTester, error) {
 	// we just create a mapping of each name, to it's siteUserTester.
 	ubses, err := LoadAllSiteElements(filePath)

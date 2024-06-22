@@ -1,0 +1,9 @@
+[
+    {
+      "Name": "Apple Discussions",
+      "UrlHome": "https://discussions.apple.com",
+      "UrlUsername": "https://discussions.apple.com/profile/%s",
+      "UnclaimedIfResponseHas": "The page you tried was not found. You may have used an outdated link or may have typed the address (URL) incorrectly.",
+      "IsNSFW": false
+    }
+  ]

@@ -78,11 +78,15 @@ func (sut *DataToUserTester) TestSiteHas(usingCache bool, names ...string) []boo
 	return ans
 }
 
+func (sut *DataToUserTester) IsNSFW() bool {
+	return sut.dataElement.IsNSFW
+}
+
 // returns true if any of these usernames are found.
 func (sut *DataToUserTester) TestSiteHasAny(usingCache bool, names ...string) bool {
 	sut.lock.Lock()
 	defer sut.lock.Unlock()
-
+	// time to beat with these is 51.7s. Without is 52.4
 	for _, name := range names {
 		if sut.unsafeTestSiteHas(name, usingCache) {
 			return true

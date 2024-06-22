@@ -82,7 +82,28 @@ func TestSherlock(t *testing.T) {
 		t.Fatal(err)
 	}
 	sher.AssignNewUser(user)
-	knownSites, _, _, err := sher.TrackUser(true)
+	knownSites, likelySites, possibleSites, err := sher.TrackUser(true)
 	assert.NoError(t, err)
 	assert.Contains(t, knownSites, "Apple Discussions")
+	assert.Equal(t, likelySites, []string{})
+	assert.Equal(t, possibleSites, []string{})
+
+	// now test it again but with the names moved to likely
+	user.LikelyUsernames = user.KnownUsernames
+	user.KnownUsernames = []string{}
+	knownSites, likelySites, possibleSites, err = sher.TrackUser(true)
+	assert.NoError(t, err)
+	assert.Contains(t, likelySites, "Apple Discussions")
+	assert.Equal(t, knownSites, []string{})
+	assert.Equal(t, possibleSites, []string{})
+
+	// and now with possible
+	user.PossibleUsernames = user.LikelyUsernames
+	user.LikelyUsernames = []string{}
+	knownSites, likelySites, possibleSites, err = sher.TrackUser(true)
+	assert.NoError(t, err)
+	assert.Contains(t, possibleSites, "Apple Discussions")
+	assert.Equal(t, knownSites, []string{})
+	assert.Equal(t, likelySites, []string{})
+	// AddSiteElement(jsonFile)
 }

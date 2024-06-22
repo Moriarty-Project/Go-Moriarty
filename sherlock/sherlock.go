@@ -1,6 +1,7 @@
 package sherlock
 
 import (
+	"fmt"
 	"sync"
 )
 
@@ -25,44 +26,52 @@ func (s *Sherlock) AssignNewUser(user *UserRecordings) {
 
 // attempts to
 func (s *Sherlock) TrackUser(caching bool) (sitesFoundByKnown, sitesFoundByLikely, SitesFoundByPossible []string, err error) {
-	sitesFoundByKnown = []string{}
-	sitesFoundByLikely = []string{}
-	SitesFoundByPossible = []string{}
+	bufferSize := len(s.siteTesters) / 5
+	sitesFoundByKnown = make([]string, 0, bufferSize)
+	sitesFoundByLikely = make([]string, 0, bufferSize)
+	SitesFoundByPossible = make([]string, 0, bufferSize)
 	wg := sync.WaitGroup{}
 	wg.Add(len(s.siteTesters))
 	doneChan := make(chan bool, 1)
 	// add a little waiter function here
-	go func() {
-		wg.Wait()
-		doneChan <- true
-	}()
 
-	bufferSize := len(s.siteTesters) / 5
 	knownChan := make(chan string, bufferSize)
 	likelyChan := make(chan string, bufferSize)
 	possibleChan := make(chan string, bufferSize)
 	errChan := make(chan error)
 
 	user := s.trackingUser
+	knownNames := append(user.KnownEmails, user.KnownUsernames...)
+	likelyNames := append(user.LikelyEmails, user.LikelyUsernames...)
+	possibleNames := append(user.PossibleEmails, user.PossibleUsernames...)
 	// now, we go tracking.
-	for _, sut := range s.siteTesters {
-		go func(sut *DataToUserTester) {
-			defer wg.Done()
-			knowns := append(user.KnownEmails, user.KnownUsernames...)
-			if sut.TestSiteHasAny(caching, knowns...) {
-				knownChan <- sut.GetSiteName()
+	fmt.Println("now starting the go routines")
+	for sutName, sut := range s.siteTesters {
+		if sut.IsNSFW() && !user.CheckingNSFW {
+			wg.Done()
+			continue
+			// we arent checking nsfw sites this time
+		}
+		go func(sut *DataToUserTester, sutName string) {
+			if sut.TestSiteHasAny(caching, knownNames...) {
+				knownChan <- sutName
 			}
-			likelys := append(user.LikelyEmails, user.LikelyUsernames...)
-			if sut.TestSiteHasAny(caching, likelys...) {
-				likelyChan <- sut.GetSiteName()
+			if sut.TestSiteHasAny(caching, likelyNames...) {
+				likelyChan <- sutName
 			}
-			possibles := append(user.PossibleEmails, user.PossibleUsernames...)
-			if sut.TestSiteHasAny(caching, possibles...) {
-				possibleChan <- sut.GetSiteName()
+			if sut.TestSiteHasAny(caching, possibleNames...) {
+				possibleChan <- sutName
 			}
-		}(sut)
+			wg.Done()
+		}(sut, sutName)
 	}
-
+	fmt.Println("all routines have been started!")
+	go func() {
+		wg.Wait()
+		fmt.Println("all go routines have finished!")
+		doneChan <- true
+	}()
+	fmt.Println("waitgroup is waiting now!")
 	// next we do need to get this data into the answer arrays...
 	for {
 		select {
@@ -75,10 +84,10 @@ func (s *Sherlock) TrackUser(caching bool) (sitesFoundByKnown, sitesFoundByLikel
 			sitesFoundByLikely = append(sitesFoundByLikely, likely)
 		case possible := <-possibleChan:
 			SitesFoundByPossible = append(SitesFoundByPossible, possible)
-		default:
-			if len(knownChan) == 0 && len(likelyChan) == 0 && len(possibleChan) == 0 && len(doneChan) == 1 {
-				return
-			}
+		}
+		if len(knownChan) == 0 && len(likelyChan) == 0 && len(possibleChan) == 0 && len(doneChan) == 1 {
+			fmt.Println("done!\n ")
+			return
 		}
 	}
 }

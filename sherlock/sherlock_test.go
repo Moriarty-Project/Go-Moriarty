@@ -15,8 +15,8 @@ func TestSiteCheckWithStatus(t *testing.T) {
 		IsNSFW:                 false,
 	}
 	sut := NewSiteUserTester(ubse)
-	assert.True(t, sut.TestSiteHas("Name", false))
-	assert.False(t, sut.TestSiteHas("reallyreallyrarename", false))
+	assert.True(t, sut.TestSiteHas(false, "Name")[0])
+	assert.False(t, sut.TestSiteHas(false, "reallyreallyrarename")[0])
 }
 
 func TestSiteCheckWithResponse(t *testing.T) {
@@ -28,8 +28,8 @@ func TestSiteCheckWithResponse(t *testing.T) {
 		IsNSFW:                 false,
 	}
 	sut := NewSiteUserTester(ubse)
-	assert.True(t, sut.TestSiteHas("helloWorld", false))
-	assert.False(t, sut.TestSiteHas("reallyasjnhnsujkdhnukdskjahjn", false))
+	assert.True(t, sut.TestSiteHas(false, "helloWorld")[0])
+	assert.False(t, sut.TestSiteHas(false, "reallyasjnhnsujkdhnukdskjahjn")[0])
 }
 
 func TestLoadingElements(t *testing.T) {
@@ -49,8 +49,8 @@ func TestLoadingElements(t *testing.T) {
 	assert.Equal(t, ubse, siteTesters["Apple Discussions"].SiteElement)
 
 	sut := siteTesters["Apple Discussions"]
-	assert.True(t, sut.TestSiteHas("helloWorld", false))
-	assert.False(t, sut.TestSiteHas("reallyasjnhnsujkdhnukdskjahjn", false))
+	assert.True(t, sut.TestSiteHas(false, "helloWorld")[0])
+	assert.False(t, sut.TestSiteHas(false, "reallyasjnhnsujkdhnukdskjahjn")[0])
 
 }
 
@@ -66,7 +66,7 @@ func BenchmarkWithCache(b *testing.B) {
 	sut := NewSiteUserTester(ubse)
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
-		sut.TestSiteHas("Name", true)
+		sut.TestSiteHas(true, "Name")
 	}
 
 }

@@ -35,32 +35,42 @@ func (s *Sherlock) TrackUser(caching bool) (sitesFoundByKnown, sitesFoundByLikel
 	sitesFoundByKnown = []string{}
 	sitesFoundByLikely = []string{}
 	SitesFoundByPossible = []string{}
-	wg := make(chan interface{}, len(s.siteTesters))
+	wg := sync.WaitGroup{}
+	wg.Add(len(s.siteTesters))
+	doneChan := make(chan bool, 1)
+	// add a little waiter function here
+	go func() {
+		wg.Wait()
+		doneChan <- true
+	}()
+
 	bufferSize := len(s.siteTesters) / 5
 	knownChan := make(chan string, bufferSize)
 	likelyChan := make(chan string, bufferSize)
 	possibleChan := make(chan string, bufferSize)
 	errChan := make(chan error)
+
+	user := s.trackingUser
 	// now, we go tracking.
 	for _, sut := range s.siteTesters {
 		go func(sut *SiteUserTester) {
-			defer func() { wg <- nil }()
-			known, likely, possible, err := sut.TestSiteWith(s.trackingUser, caching)
-			if err != nil {
-				errChan <- err
-				return
+			defer wg.Done()
+			knowns := append(user.KnownEmails, user.KnownUsernames...)
+			if sut.TestSiteHasAny(caching, knowns...) {
+				knownChan <- sut.GetSiteName()
 			}
-			for _, val := range known {
-				knownChan <- val.Name
+			likelys := append(user.LikelyEmails, user.LikelyUsernames...)
+			if sut.TestSiteHasAny(caching, likelys...) {
+				likelyChan <- sut.GetSiteName()
 			}
-			for _, val := range likely {
-				likelyChan <- val.Name
-			}
-			for _, val := range possible {
-				possibleChan <- val.Name
+			possibles := append(user.PossibleEmails, user.PossibleUsernames...)
+			if sut.TestSiteHasAny(caching, possibles...) {
+				possibleChan <- sut.GetSiteName()
 			}
 		}(sut)
 	}
+
+	// next we do need to get this data into the answer arrays...
 	for {
 		select {
 		case errResult := <-errChan:
@@ -73,10 +83,9 @@ func (s *Sherlock) TrackUser(caching bool) (sitesFoundByKnown, sitesFoundByLikel
 		case possible := <-possibleChan:
 			SitesFoundByPossible = append(SitesFoundByPossible, possible)
 		default:
-			if len(knownChan) == 0 && len(likelyChan) == 0 && len(possibleChan) == 0 && len(wg) == len(s.siteTesters) {
+			if len(knownChan) == 0 && len(likelyChan) == 0 && len(possibleChan) == 0 && len(doneChan) == 1 {
 				return
 			}
-
 		}
 	}
 }
@@ -253,11 +262,28 @@ func (sut *SiteUserTester) TestSiteWith(user *UserRecordings, usingCache bool) (
 
 	return
 }
-func (sut *SiteUserTester) TestSiteHas(username string, usingCache bool) bool {
+func (sut *SiteUserTester) TestSiteHas(usingCache bool, names ...string) []bool {
+	sut.lock.Lock()
+	defer sut.lock.Unlock()
+	ans := make([]bool, 0, len(names))
+
+	for _, name := range names {
+		ans = append(ans, sut.unsafeTestSiteHas(name, usingCache))
+	}
+	return ans
+}
+
+// returns true if any of these usernames are found.
+func (sut *SiteUserTester) TestSiteHasAny(usingCache bool, names ...string) bool {
 	sut.lock.Lock()
 	defer sut.lock.Unlock()
 
-	return sut.unsafeTestSiteHas(username, usingCache)
+	for _, name := range names {
+		if sut.unsafeTestSiteHas(name, usingCache) {
+			return true
+		}
+	}
+	return false
 }
 
 // WARNING: this is not thread safe! use with caution!

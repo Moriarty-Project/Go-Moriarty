@@ -1,9 +1,2858 @@
 [
-    {
-      "Name": "Apple Discussions",
-      "UrlHome": "https://discussions.apple.com",
-      "UrlUsername": "https://discussions.apple.com/profile/%s",
-      "UnclaimedIfResponseHas": "The page you tried was not found. You may have used an outdated link or may have typed the address (URL) incorrectly.",
-      "IsNSFW": false
-    }
-  ]
+  {
+    "Name": "1337x",
+    "UrlHome": "https://www.1337x.to/",
+    "UrlUsername": "https://www.1337x.to/user/%s/",
+    "UnclaimedIfResponseHas": "\u003ctitle\u003eError something went wrong.\u003c/title\u003e",
+    "IsNSFW": false
+  },
+  {
+    "Name": "2Dimensions",
+    "UrlHome": "https://2Dimensions.com/",
+    "UrlUsername": "https://2Dimensions.com/a/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "3dnews",
+    "UrlHome": "http://forum.3dnews.ru/",
+    "UrlUsername": "http://forum.3dnews.ru/member.php?username=%s",
+    "UnclaimedIfResponseHas": "Пользователь не зарегистрирован и не имеет профиля для просмотра.",
+    "IsNSFW": false
+  },
+  {
+    "Name": "7Cups",
+    "UrlHome": "https://www.7cups.com/",
+    "UrlUsername": "https://www.7cups.com/@%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "8tracks",
+    "UrlHome": "https://8tracks.com/",
+    "UrlUsername": "https://8tracks.com/%s",
+    "UnclaimedIfResponseHas": "This page has vanished",
+    "IsNSFW": false
+  },
+  {
+    "Name": "9GAG",
+    "UrlHome": "https://www.9gag.com/",
+    "UrlUsername": "https://www.9gag.com/u/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "APClips",
+    "UrlHome": "https://apclips.com/",
+    "UrlUsername": "https://apclips.com/%s",
+    "UnclaimedIfResponseHas": "Amateur Porn Content Creators",
+    "IsNSFW": true
+  },
+  {
+    "Name": "About.me",
+    "UrlHome": "https://about.me/",
+    "UrlUsername": "https://about.me/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Academia.edu",
+    "UrlHome": "https://www.academia.edu/",
+    "UrlUsername": "https://independent.academia.edu/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "AdmireMe.Vip",
+    "UrlHome": "https://admireme.vip/",
+    "UrlUsername": "https://admireme.vip/%s",
+    "UnclaimedIfResponseHas": "Page Not Found",
+    "IsNSFW": true
+  },
+  {
+    "Name": "Air Pilot Life",
+    "UrlHome": "https://airlinepilot.life/",
+    "UrlUsername": "https://airlinepilot.life/u/%s",
+    "UnclaimedIfResponseHas": "Oops! That page doesn’t exist or is private",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Airbit",
+    "UrlHome": "https://airbit.com/",
+    "UrlUsername": "https://airbit.com/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Airliners",
+    "UrlHome": "https://www.airliners.net/",
+    "UrlUsername": "https://www.airliners.net/user/%s/profile/photos",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Alik.cz",
+    "UrlHome": "https://www.alik.cz/",
+    "UrlUsername": "https://www.alik.cz/u/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "All Things Worn",
+    "UrlHome": "https://www.allthingsworn.com",
+    "UrlUsername": "https://www.allthingsworn.com/profile/%s",
+    "UnclaimedIfResponseHas": "Sell Used Panties",
+    "IsNSFW": true
+  },
+  {
+    "Name": "AllMyLinks",
+    "UrlHome": "https://allmylinks.com/",
+    "UrlUsername": "https://allmylinks.com/%s",
+    "UnclaimedIfResponseHas": "Not Found",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Amino",
+    "UrlHome": "https://aminoapps.com",
+    "UrlUsername": "https://aminoapps.com/u/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "AniWorld",
+    "UrlHome": "https://aniworld.to/",
+    "UrlUsername": "https://aniworld.to/user/profil/%s",
+    "UnclaimedIfResponseHas": "Dieses Profil ist nicht verfügbar",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Anilist",
+    "UrlHome": "https://anilist.co/",
+    "UrlUsername": "https://anilist.co/user/%s/",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Apple Developer",
+    "UrlHome": "https://developer.apple.com",
+    "UrlUsername": "https://developer.apple.com/forums/profile/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Apple Discussions",
+    "UrlHome": "https://discussions.apple.com",
+    "UrlUsername": "https://discussions.apple.com/profile/%s",
+    "UnclaimedIfResponseHas": "The page you tried was not found. You may have used an outdated link or may have typed the address (URL) incorrectly.",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Archive of Our Own",
+    "UrlHome": "https://archiveofourown.org/",
+    "UrlUsername": "https://archiveofourown.org/users/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Archive.org",
+    "UrlHome": "https://archive.org",
+    "UrlUsername": "https://archive.org/details/@%s",
+    "UnclaimedIfResponseHas": "could not fetch an account with user item identifier",
+    "IsNSFW": false
+  },
+  {
+    "Name": "ArtStation",
+    "UrlHome": "https://www.artstation.com/",
+    "UrlUsername": "https://www.artstation.com/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Asciinema",
+    "UrlHome": "https://asciinema.org",
+    "UrlUsername": "https://asciinema.org/~%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Ask Fedora",
+    "UrlHome": "https://ask.fedoraproject.org/",
+    "UrlUsername": "https://ask.fedoraproject.org/u/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "AskFM",
+    "UrlHome": "https://ask.fm/",
+    "UrlUsername": "https://ask.fm/%s",
+    "UnclaimedIfResponseHas": "Well, apparently not anymore.",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Audiojungle",
+    "UrlHome": "https://audiojungle.net/",
+    "UrlUsername": "https://audiojungle.net/user/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Autofrage",
+    "UrlHome": "https://www.autofrage.net/",
+    "UrlUsername": "https://www.autofrage.net/nutzer/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Avizo",
+    "UrlHome": "https://www.avizo.cz/",
+    "UrlUsername": "https://www.avizo.cz/%s/",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "BLIP.fm",
+    "UrlHome": "https://blip.fm/",
+    "UrlUsername": "https://blip.fm/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "BOOTH",
+    "UrlHome": "https://booth.pm/",
+    "UrlUsername": "https://%s.booth.pm/",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Bandcamp",
+    "UrlHome": "https://www.bandcamp.com/",
+    "UrlUsername": "https://www.bandcamp.com/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Bazar.cz",
+    "UrlHome": "https://www.bazar.cz/",
+    "UrlUsername": "https://www.bazar.cz/%s/",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Behance",
+    "UrlHome": "https://www.behance.net/",
+    "UrlUsername": "https://www.behance.net/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Bezuzyteczna",
+    "UrlHome": "https://bezuzyteczna.pl",
+    "UrlUsername": "https://bezuzyteczna.pl/uzytkownicy/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "BiggerPockets",
+    "UrlHome": "https://www.biggerpockets.com/",
+    "UrlUsername": "https://www.biggerpockets.com/users/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Bikemap",
+    "UrlHome": "https://www.bikemap.net/",
+    "UrlUsername": "https://www.bikemap.net/en/u/%s/routes/created/",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "BioHacking",
+    "UrlHome": "https://forum.dangerousthings.com/",
+    "UrlUsername": "https://forum.dangerousthings.com/u/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "BitBucket",
+    "UrlHome": "https://bitbucket.org/",
+    "UrlUsername": "https://bitbucket.org/%s/",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Bitwarden Forum",
+    "UrlHome": "https://bitwarden.com/",
+    "UrlUsername": "https://community.bitwarden.com/u/%s/summary",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Blipfoto",
+    "UrlHome": "https://www.blipfoto.com/",
+    "UrlUsername": "https://www.blipfoto.com/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Blogger",
+    "UrlHome": "https://www.blogger.com/",
+    "UrlUsername": "https://%s.blogspot.com",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "BodyBuilding",
+    "UrlHome": "https://bodyspace.bodybuilding.com/",
+    "UrlUsername": "https://bodyspace.bodybuilding.com/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "BongaCams",
+    "UrlHome": "https://pt.bongacams.com",
+    "UrlUsername": "https://pt.bongacams.com/profile/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": true
+  },
+  {
+    "Name": "Bookcrossing",
+    "UrlHome": "https://www.bookcrossing.com/",
+    "UrlUsername": "https://www.bookcrossing.com/mybookshelf/%s/",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "BraveCommunity",
+    "UrlHome": "https://community.brave.com/",
+    "UrlUsername": "https://community.brave.com/u/%s/",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "BugCrowd",
+    "UrlHome": "https://bugcrowd.com/",
+    "UrlUsername": "https://bugcrowd.com/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "BuyMeACoffee",
+    "UrlHome": "https://www.buymeacoffee.com/",
+    "UrlUsername": "https://buymeacoff.ee/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "BuzzFeed",
+    "UrlHome": "https://buzzfeed.com/",
+    "UrlUsername": "https://buzzfeed.com/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "CGTrader",
+    "UrlHome": "https://www.cgtrader.com",
+    "UrlUsername": "https://www.cgtrader.com/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "CNET",
+    "UrlHome": "https://www.cnet.com/",
+    "UrlUsername": "https://www.cnet.com/profiles/%s/",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "CSSBattle",
+    "UrlHome": "https://cssbattle.dev",
+    "UrlUsername": "https://cssbattle.dev/player/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "CTAN",
+    "UrlHome": "https://ctan.org/",
+    "UrlUsername": "https://ctan.org/author/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Caddy Community",
+    "UrlHome": "https://caddy.community/",
+    "UrlUsername": "https://caddy.community/u/%s/summary",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Car Talk Community",
+    "UrlHome": "https://community.cartalk.com/",
+    "UrlUsername": "https://community.cartalk.com/u/%s/summary",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Carbonmade",
+    "UrlHome": "https://carbonmade.com/",
+    "UrlUsername": "https://%s.carbonmade.com",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Career.habr",
+    "UrlHome": "https://career.habr.com/",
+    "UrlUsername": "https://career.habr.com/%s",
+    "UnclaimedIfResponseHas": "\u003ch1\u003eОшибка 404\u003c/h1\u003e",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Championat",
+    "UrlHome": "https://www.championat.com/",
+    "UrlUsername": "https://www.championat.com/user/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Chaos",
+    "UrlHome": "https://chaos.social/",
+    "UrlUsername": "https://chaos.social/@%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Chatujme.cz",
+    "UrlHome": "https://chatujme.cz/",
+    "UrlUsername": "https://profil.chatujme.cz/%s",
+    "UnclaimedIfResponseHas": "Neexistujicí profil",
+    "IsNSFW": false
+  },
+  {
+    "Name": "ChaturBate",
+    "UrlHome": "https://chaturbate.com",
+    "UrlUsername": "https://chaturbate.com/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": true
+  },
+  {
+    "Name": "Chess",
+    "UrlHome": "https://www.chess.com/",
+    "UrlUsername": "https://www.chess.com/member/%s",
+    "UnclaimedIfResponseHas": "Username is valid",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Choice Community",
+    "UrlHome": "https://choice.community/",
+    "UrlUsername": "https://choice.community/u/%s/summary",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Clapper",
+    "UrlHome": "https://clapperapp.com/",
+    "UrlUsername": "https://clapperapp.com/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "CloudflareCommunity",
+    "UrlHome": "https://community.cloudflare.com/",
+    "UrlUsername": "https://community.cloudflare.com/u/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Clozemaster",
+    "UrlHome": "https://www.clozemaster.com",
+    "UrlUsername": "https://www.clozemaster.com/players/%s",
+    "UnclaimedIfResponseHas": "Oh no! Player not found.",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Clubhouse",
+    "UrlHome": "https://www.clubhouse.com",
+    "UrlUsername": "https://www.clubhouse.com/@%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Code Snippet Wiki",
+    "UrlHome": "https://codesnippets.fandom.com",
+    "UrlUsername": "https://codesnippets.fandom.com/wiki/User:%s",
+    "UnclaimedIfResponseHas": "This user has not filled out their profile page yet",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Codeberg",
+    "UrlHome": "https://codeberg.org/",
+    "UrlUsername": "https://codeberg.org/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Codecademy",
+    "UrlHome": "https://www.codecademy.com/",
+    "UrlUsername": "https://www.codecademy.com/profiles/%s",
+    "UnclaimedIfResponseHas": "This profile could not be found",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Codechef",
+    "UrlHome": "https://www.codechef.com/",
+    "UrlUsername": "https://www.codechef.com/users/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Codeforces",
+    "UrlHome": "https://codeforces.com/",
+    "UrlUsername": "https://codeforces.com/profile/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Codepen",
+    "UrlHome": "https://codepen.io/",
+    "UrlUsername": "https://codepen.io/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Coders Rank",
+    "UrlHome": "https://codersrank.io/",
+    "UrlUsername": "https://profile.codersrank.io/user/%s/",
+    "UnclaimedIfResponseHas": "not a registered member",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Coderwall",
+    "UrlHome": "https://coderwall.com",
+    "UrlUsername": "https://coderwall.com/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Codewars",
+    "UrlHome": "https://www.codewars.com",
+    "UrlUsername": "https://www.codewars.com/users/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Coinvote",
+    "UrlHome": "https://coinvote.cc/",
+    "UrlUsername": "https://coinvote.cc/profile/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "ColourLovers",
+    "UrlHome": "https://www.colourlovers.com/",
+    "UrlUsername": "https://www.colourlovers.com/lover/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Contently",
+    "UrlHome": "https://contently.com/",
+    "UrlUsername": "https://%s.contently.com/",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Coroflot",
+    "UrlHome": "https://coroflot.com/",
+    "UrlUsername": "https://www.coroflot.com/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Cracked",
+    "UrlHome": "https://www.cracked.com/",
+    "UrlUsername": "https://www.cracked.com/members/%s/",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Crevado",
+    "UrlHome": "https://crevado.com/",
+    "UrlUsername": "https://%s.crevado.com",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Crowdin",
+    "UrlHome": "https://crowdin.com/",
+    "UrlUsername": "https://crowdin.com/profile/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Cryptomator Forum",
+    "UrlHome": "https://community.cryptomator.org/",
+    "UrlUsername": "https://community.cryptomator.org/u/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Cults3D",
+    "UrlHome": "https://cults3d.com/en",
+    "UrlUsername": "https://cults3d.com/en/users/%s/creations",
+    "UnclaimedIfResponseHas": "Oh dear, this page is not working!",
+    "IsNSFW": false
+  },
+  {
+    "Name": "CyberDefenders",
+    "UrlHome": "https://cyberdefenders.org/",
+    "UrlUsername": "https://cyberdefenders.org/p/%s",
+    "UnclaimedIfResponseHas": "\u003ctitle\u003eBlue Team Training for SOC analysts and DFIR - CyberDefenders\u003c/title\u003e",
+    "IsNSFW": false
+  },
+  {
+    "Name": "DEV Community",
+    "UrlHome": "https://dev.to/",
+    "UrlUsername": "https://dev.to/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "DMOJ",
+    "UrlHome": "https://dmoj.ca/",
+    "UrlUsername": "https://dmoj.ca/user/%s",
+    "UnclaimedIfResponseHas": "No such user",
+    "IsNSFW": false
+  },
+  {
+    "Name": "DailyMotion",
+    "UrlHome": "https://www.dailymotion.com/",
+    "UrlUsername": "https://www.dailymotion.com/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Dealabs",
+    "UrlHome": "https://www.dealabs.com/",
+    "UrlUsername": "https://www.dealabs.com/profile/%s",
+    "UnclaimedIfResponseHas": "La page que vous essayez",
+    "IsNSFW": false
+  },
+  {
+    "Name": "DeviantART",
+    "UrlHome": "https://deviantart.com",
+    "UrlUsername": "https://%s.deviantart.com",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Discogs",
+    "UrlHome": "https://www.discogs.com/",
+    "UrlUsername": "https://www.discogs.com/user/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Discuss.Elastic.co",
+    "UrlHome": "https://discuss.elastic.co/",
+    "UrlUsername": "https://discuss.elastic.co/u/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Disqus",
+    "UrlHome": "https://disqus.com/",
+    "UrlUsername": "https://disqus.com/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Docker Hub",
+    "UrlHome": "https://hub.docker.com/",
+    "UrlUsername": "https://hub.docker.com/u/%s/",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Dribbble",
+    "UrlHome": "https://dribbble.com/",
+    "UrlUsername": "https://dribbble.com/%s",
+    "UnclaimedIfResponseHas": "Whoops, that page is gone.",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Duolingo",
+    "UrlHome": "https://duolingo.com/",
+    "UrlUsername": "https://www.duolingo.com/profile/%s",
+    "UnclaimedIfResponseHas": "{\"users\":[]}",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Eintracht Frankfurt Forum",
+    "UrlHome": "https://community.eintracht.de/",
+    "UrlUsername": "https://community.eintracht.de/fans/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Envato Forum",
+    "UrlHome": "https://forums.envato.com/",
+    "UrlUsername": "https://forums.envato.com/u/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Erome",
+    "UrlHome": "https://www.erome.com/",
+    "UrlUsername": "https://www.erome.com/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": true
+  },
+  {
+    "Name": "Etsy",
+    "UrlHome": "https://www.etsy.com/",
+    "UrlUsername": "https://www.etsy.com/shop/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Euw",
+    "UrlHome": "https://euw.op.gg/",
+    "UrlUsername": "https://euw.op.gg/summoner/userName=%s",
+    "UnclaimedIfResponseHas": "This summoner is not registered at OP.GG. Please check spelling.",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Exposure",
+    "UrlHome": "https://exposure.co/",
+    "UrlUsername": "https://%s.exposure.co/",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "EyeEm",
+    "UrlHome": "https://www.eyeem.com/",
+    "UrlUsername": "https://www.eyeem.com/u/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "F3.cool",
+    "UrlHome": "https://f3.cool/",
+    "UrlUsername": "https://f3.cool/%s/",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Fameswap",
+    "UrlHome": "https://fameswap.com/",
+    "UrlUsername": "https://fameswap.com/user/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Fandom",
+    "UrlHome": "https://www.fandom.com/",
+    "UrlUsername": "https://www.fandom.com/u/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Finanzfrage",
+    "UrlHome": "https://www.finanzfrage.net/",
+    "UrlUsername": "https://www.finanzfrage.net/nutzer/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Fiverr",
+    "UrlHome": "https://www.fiverr.com/",
+    "UrlUsername": "https://www.fiverr.com/%s",
+    "UnclaimedIfResponseHas": "\"status\":\"success\"",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Flickr",
+    "UrlHome": "https://www.flickr.com/",
+    "UrlUsername": "https://www.flickr.com/people/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Flightradar24",
+    "UrlHome": "https://www.flightradar24.com/",
+    "UrlUsername": "https://my.flightradar24.com/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Flipboard",
+    "UrlHome": "https://flipboard.com/",
+    "UrlUsername": "https://flipboard.com/@%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Football",
+    "UrlHome": "https://www.rusfootball.info/",
+    "UrlUsername": "https://www.rusfootball.info/user/%s/",
+    "UnclaimedIfResponseHas": "Пользователь с таким именем не найден",
+    "IsNSFW": false
+  },
+  {
+    "Name": "FortniteTracker",
+    "UrlHome": "https://fortnitetracker.com/challenges",
+    "UrlUsername": "https://fortnitetracker.com/profile/all/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Forum Ophilia",
+    "UrlHome": "https://www.forumophilia.com/",
+    "UrlUsername": "https://www.forumophilia.com/profile.php?mode=viewprofile\u0026u=%s",
+    "UnclaimedIfResponseHas": "that user does not exist",
+    "IsNSFW": true
+  },
+  {
+    "Name": "Fosstodon",
+    "UrlHome": "https://fosstodon.org/",
+    "UrlUsername": "https://fosstodon.org/@%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Freelance.habr",
+    "UrlHome": "https://freelance.habr.com/",
+    "UrlUsername": "https://freelance.habr.com/freelancers/%s",
+    "UnclaimedIfResponseHas": "\u003cdiv class=\"icon_user_locked\"\u003e\u003c/div\u003e",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Freelancer",
+    "UrlHome": "https://www.freelancer.com/",
+    "UrlUsername": "https://www.freelancer.com/u/%s",
+    "UnclaimedIfResponseHas": "\"users\":{}",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Freesound",
+    "UrlHome": "https://freesound.org/",
+    "UrlUsername": "https://freesound.org/people/%s/",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "GNOME VCS",
+    "UrlHome": "https://gitlab.gnome.org/",
+    "UrlUsername": "https://gitlab.gnome.org/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "GaiaOnline",
+    "UrlHome": "https://www.gaiaonline.com/",
+    "UrlUsername": "https://www.gaiaonline.com/profiles/%s",
+    "UnclaimedIfResponseHas": "No user ID specified or user does not exist",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Gamespot",
+    "UrlHome": "https://www.gamespot.com/",
+    "UrlUsername": "https://www.gamespot.com/profile/%s/",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "GeeksforGeeks",
+    "UrlHome": "https://www.geeksforgeeks.org/",
+    "UrlUsername": "https://auth.geeksforgeeks.org/user/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Genius (Artists)",
+    "UrlHome": "https://genius.com/",
+    "UrlUsername": "https://genius.com/artists/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Genius (Users)",
+    "UrlHome": "https://genius.com/",
+    "UrlUsername": "https://genius.com/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Gesundheitsfrage",
+    "UrlHome": "https://www.gesundheitsfrage.net/",
+    "UrlUsername": "https://www.gesundheitsfrage.net/nutzer/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "GetMyUni",
+    "UrlHome": "https://getmyuni.com/",
+    "UrlUsername": "https://www.getmyuni.com/user/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Giant Bomb",
+    "UrlHome": "https://www.giantbomb.com/",
+    "UrlUsername": "https://www.giantbomb.com/profile/%s/",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Giphy",
+    "UrlHome": "https://giphy.com/",
+    "UrlUsername": "https://giphy.com/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "GitBook",
+    "UrlHome": "https://gitbook.com/",
+    "UrlUsername": "https://%s.gitbook.io/",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "GitHub",
+    "UrlHome": "https://www.github.com/",
+    "UrlUsername": "https://www.github.com/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "GitLab",
+    "UrlHome": "https://gitlab.com/",
+    "UrlUsername": "https://gitlab.com/%s",
+    "UnclaimedIfResponseHas": "[]",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Gitee",
+    "UrlHome": "https://gitee.com/",
+    "UrlUsername": "https://gitee.com/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "GoodReads",
+    "UrlHome": "https://www.goodreads.com/",
+    "UrlUsername": "https://www.goodreads.com/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Google Play",
+    "UrlHome": "https://play.google.com",
+    "UrlUsername": "https://play.google.com/store/apps/developer?id=%s",
+    "UnclaimedIfResponseHas": "the requested URL was not found on this server",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Gradle",
+    "UrlHome": "https://gradle.org/",
+    "UrlUsername": "https://plugins.gradle.org/u/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Grailed",
+    "UrlHome": "https://www.grailed.com/",
+    "UrlUsername": "https://www.grailed.com/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Gravatar",
+    "UrlHome": "http://en.gravatar.com/",
+    "UrlUsername": "http://en.gravatar.com/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Gumroad",
+    "UrlHome": "https://www.gumroad.com/",
+    "UrlUsername": "https://www.gumroad.com/%s",
+    "UnclaimedIfResponseHas": "Page not found (404) - Gumroad",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Gutefrage",
+    "UrlHome": "https://www.gutefrage.net/",
+    "UrlUsername": "https://www.gutefrage.net/nutzer/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "HackTheBox",
+    "UrlHome": "https://forum.hackthebox.eu/",
+    "UrlUsername": "https://forum.hackthebox.eu/profile/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Hackaday",
+    "UrlHome": "https://hackaday.io/",
+    "UrlUsername": "https://hackaday.io/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "HackenProof (Hackers)",
+    "UrlHome": "https://hackenproof.com/",
+    "UrlUsername": "https://hackenproof.com/hackers/%s",
+    "UnclaimedIfResponseHas": "\u003ctitle\u003eWeb3’s Largest Ethical Hackers Community | HackenProof\u003c/title\u003e",
+    "IsNSFW": false
+  },
+  {
+    "Name": "HackerEarth",
+    "UrlHome": "https://hackerearth.com/",
+    "UrlUsername": "https://hackerearth.com/@%s",
+    "UnclaimedIfResponseHas": "404. URL not found.",
+    "IsNSFW": false
+  },
+  {
+    "Name": "HackerNews",
+    "UrlHome": "https://news.ycombinator.com/",
+    "UrlUsername": "https://news.ycombinator.com/user?id=%s",
+    "UnclaimedIfResponseHas": "No such user.",
+    "IsNSFW": false
+  },
+  {
+    "Name": "HackerOne",
+    "UrlHome": "https://hackerone.com/",
+    "UrlUsername": "https://hackerone.com/%s",
+    "UnclaimedIfResponseHas": "Page not found",
+    "IsNSFW": false
+  },
+  {
+    "Name": "HackerRank",
+    "UrlHome": "https://hackerrank.com/",
+    "UrlUsername": "https://hackerrank.com/%s",
+    "UnclaimedIfResponseHas": "Something went wrong",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Harvard Scholar",
+    "UrlHome": "https://scholar.harvard.edu/",
+    "UrlUsername": "https://scholar.harvard.edu/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Hashnode",
+    "UrlHome": "https://hashnode.com",
+    "UrlUsername": "https://hashnode.com/@%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Heavy-R",
+    "UrlHome": "https://www.heavy-r.com/",
+    "UrlUsername": "https://www.heavy-r.com/user/%s",
+    "UnclaimedIfResponseHas": "Channel not found",
+    "IsNSFW": true
+  },
+  {
+    "Name": "Holopin",
+    "UrlHome": "https://holopin.io",
+    "UrlUsername": "https://holopin.io/@%s",
+    "UnclaimedIfResponseHas": "true",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Houzz",
+    "UrlHome": "https://houzz.com/",
+    "UrlUsername": "https://houzz.com/user/%s",
+    "UnclaimedIfResponseHas": "The page you requested was not found.",
+    "IsNSFW": false
+  },
+  {
+    "Name": "HubPages",
+    "UrlHome": "https://hubpages.com/",
+    "UrlUsername": "https://hubpages.com/@%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Hubski",
+    "UrlHome": "https://hubski.com/",
+    "UrlUsername": "https://hubski.com/user/%s",
+    "UnclaimedIfResponseHas": "No such user",
+    "IsNSFW": false
+  },
+  {
+    "Name": "HudsonRock",
+    "UrlHome": "https://hudsonrock.com",
+    "UrlUsername": "https://cavalier.hudsonrock.com/api/json/v2/osint-tools/search-by-username?username=%s",
+    "UnclaimedIfResponseHas": "No results",
+    "IsNSFW": false
+  },
+  {
+    "Name": "ICQ",
+    "UrlHome": "https://icq.com/",
+    "UrlUsername": "https://icq.im/%s/en",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "IFTTT",
+    "UrlHome": "https://www.ifttt.com/",
+    "UrlUsername": "https://www.ifttt.com/p/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "IRC-Galleria",
+    "UrlHome": "https://irc-galleria.net/",
+    "UrlUsername": "https://irc-galleria.net/user/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Icons8 Community",
+    "UrlHome": "https://community.icons8.com/",
+    "UrlUsername": "https://community.icons8.com/u/%s/summary",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Image Fap",
+    "UrlHome": "https://www.imagefap.com/",
+    "UrlUsername": "https://www.imagefap.com/profile/%s",
+    "UnclaimedIfResponseHas": "Not found",
+    "IsNSFW": true
+  },
+  {
+    "Name": "ImgUp.cz",
+    "UrlHome": "https://imgup.cz/",
+    "UrlUsername": "https://imgup.cz/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Imgur",
+    "UrlHome": "https://imgur.com/",
+    "UrlUsername": "https://imgur.com/user/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Instagram",
+    "UrlHome": "https://instagram.com/",
+    "UrlUsername": "https://instagram.com/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Instructables",
+    "UrlHome": "https://www.instructables.com/",
+    "UrlUsername": "https://www.instructables.com/member/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Intigriti",
+    "UrlHome": "https://app.intigriti.com",
+    "UrlUsername": "https://app.intigriti.com/profile/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Ionic Forum",
+    "UrlHome": "https://forum.ionicframework.com/",
+    "UrlUsername": "https://forum.ionicframework.com/u/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Issuu",
+    "UrlHome": "https://issuu.com/",
+    "UrlUsername": "https://issuu.com/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Itch.io",
+    "UrlHome": "https://itch.io/",
+    "UrlUsername": "https://%s.itch.io/",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Itemfix",
+    "UrlHome": "https://www.itemfix.com/",
+    "UrlUsername": "https://www.itemfix.com/c/%s",
+    "UnclaimedIfResponseHas": "\u003ctitle\u003eItemFix - Channel: \u003c/title\u003e",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Jellyfin Weblate",
+    "UrlHome": "https://translate.jellyfin.org/",
+    "UrlUsername": "https://translate.jellyfin.org/user/%s/",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Jimdo",
+    "UrlHome": "https://jimdosite.com/",
+    "UrlUsername": "https://%s.jimdosite.com",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Joplin Forum",
+    "UrlHome": "https://discourse.joplinapp.org/",
+    "UrlUsername": "https://discourse.joplinapp.org/u/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "KEAKR",
+    "UrlHome": "https://www.keakr.com/",
+    "UrlUsername": "https://www.keakr.com/en/profile/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Kaggle",
+    "UrlHome": "https://www.kaggle.com/",
+    "UrlUsername": "https://www.kaggle.com/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Keybase",
+    "UrlHome": "https://keybase.io/",
+    "UrlUsername": "https://keybase.io/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Kick",
+    "UrlHome": "https://kick.com/",
+    "UrlUsername": "https://kick.com/%s",
+    "UnclaimedIfResponseHas": "Not Found",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Kik",
+    "UrlHome": "http://kik.me/",
+    "UrlUsername": "https://kik.me/%s",
+    "UnclaimedIfResponseHas": "The page you requested was not found",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Kongregate",
+    "UrlHome": "https://www.kongregate.com/",
+    "UrlUsername": "https://www.kongregate.com/accounts/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "LOR",
+    "UrlHome": "https://linux.org.ru/",
+    "UrlUsername": "https://www.linux.org.ru/people/%s/profile",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Launchpad",
+    "UrlHome": "https://launchpad.net/",
+    "UrlUsername": "https://launchpad.net/~%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "LeetCode",
+    "UrlHome": "https://leetcode.com/",
+    "UrlUsername": "https://leetcode.com/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "LessWrong",
+    "UrlHome": "https://www.lesswrong.com/",
+    "UrlUsername": "https://www.lesswrong.com/users/@%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Letterboxd",
+    "UrlHome": "https://letterboxd.com/",
+    "UrlUsername": "https://letterboxd.com/%s",
+    "UnclaimedIfResponseHas": "Sorry, we can’t find the page you’ve requested.",
+    "IsNSFW": false
+  },
+  {
+    "Name": "LibraryThing",
+    "UrlHome": "https://www.librarything.com/",
+    "UrlUsername": "https://www.librarything.com/profile/%s",
+    "UnclaimedIfResponseHas": "This user doesn't exist",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Lichess",
+    "UrlHome": "https://lichess.org",
+    "UrlUsername": "https://lichess.org/@/%s",
+    "UnclaimedIfResponseHas": "Page not found!",
+    "IsNSFW": false
+  },
+  {
+    "Name": "LinkedIn",
+    "UrlHome": "https://linkedin.com",
+    "UrlUsername": "https://linkedin.com/in/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Linktree",
+    "UrlHome": "https://linktr.ee/",
+    "UrlUsername": "https://linktr.ee/%s",
+    "UnclaimedIfResponseHas": "\"statusCode\":404",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Listed",
+    "UrlHome": "https://listed.to/",
+    "UrlUsername": "https://listed.to/@%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "LiveJournal",
+    "UrlHome": "https://www.livejournal.com/",
+    "UrlUsername": "https://%s.livejournal.com",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Lobsters",
+    "UrlHome": "https://lobste.rs/",
+    "UrlUsername": "https://lobste.rs/u/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "LottieFiles",
+    "UrlHome": "https://lottiefiles.com/",
+    "UrlUsername": "https://lottiefiles.com/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "LushStories",
+    "UrlHome": "https://www.lushstories.com/",
+    "UrlUsername": "https://www.lushstories.com/profile/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": true
+  },
+  {
+    "Name": "MMORPG Forum",
+    "UrlHome": "https://forums.mmorpg.com/",
+    "UrlUsername": "https://forums.mmorpg.com/profile/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Mapify",
+    "UrlHome": "https://mapify.travel/",
+    "UrlUsername": "https://mapify.travel/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Medium",
+    "UrlHome": "https://medium.com/",
+    "UrlUsername": "https://medium.com/@%s",
+    "UnclaimedIfResponseHas": "\u003cbody",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Memrise",
+    "UrlHome": "https://www.memrise.com/",
+    "UrlUsername": "https://www.memrise.com/user/%s/",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Minecraft",
+    "UrlHome": "https://minecraft.net/",
+    "UrlUsername": "https://api.mojang.com/users/profiles/minecraft/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "MixCloud",
+    "UrlHome": "https://www.mixcloud.com/",
+    "UrlUsername": "https://www.mixcloud.com/%s/",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Monkeytype",
+    "UrlHome": "https://monkeytype.com/",
+    "UrlUsername": "https://monkeytype.com/profile/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Motherless",
+    "UrlHome": "https://motherless.com/",
+    "UrlUsername": "https://motherless.com/m/%s",
+    "UnclaimedIfResponseHas": "no longer a member",
+    "IsNSFW": true
+  },
+  {
+    "Name": "Motorradfrage",
+    "UrlHome": "https://www.motorradfrage.net/",
+    "UrlUsername": "https://www.motorradfrage.net/nutzer/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "MyAnimeList",
+    "UrlHome": "https://myanimelist.net/",
+    "UrlUsername": "https://myanimelist.net/profile/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "MyMiniFactory",
+    "UrlHome": "https://www.myminifactory.com/",
+    "UrlUsername": "https://www.myminifactory.com/users/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Mydramalist",
+    "UrlHome": "https://mydramalist.com",
+    "UrlUsername": "https://www.mydramalist.com/profile/%s",
+    "UnclaimedIfResponseHas": "Sign in - MyDramaList",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Myspace",
+    "UrlHome": "https://myspace.com/",
+    "UrlUsername": "https://myspace.com/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "NICommunityForum",
+    "UrlHome": "https://www.native-instruments.com/forum/",
+    "UrlUsername": "https://community.native-instruments.com/profile/%s",
+    "UnclaimedIfResponseHas": "The page you were looking for could not be found.",
+    "IsNSFW": false
+  },
+  {
+    "Name": "NationStates Nation",
+    "UrlHome": "https://nationstates.net",
+    "UrlUsername": "https://nationstates.net/nation=%s",
+    "UnclaimedIfResponseHas": "Was this your nation? It may have ceased to exist due to inactivity, but can rise again!",
+    "IsNSFW": false
+  },
+  {
+    "Name": "NationStates Region",
+    "UrlHome": "https://nationstates.net",
+    "UrlUsername": "https://nationstates.net/region=%s",
+    "UnclaimedIfResponseHas": "does not exist.",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Naver",
+    "UrlHome": "https://naver.com",
+    "UrlUsername": "https://blog.naver.com/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Needrom",
+    "UrlHome": "https://www.needrom.com/",
+    "UrlUsername": "https://www.needrom.com/author/%s/",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Newgrounds",
+    "UrlHome": "https://newgrounds.com",
+    "UrlUsername": "https://%s.newgrounds.com",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Nextcloud Forum",
+    "UrlHome": "https://nextcloud.com/",
+    "UrlUsername": "https://help.nextcloud.com/u/%s/summary",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Nightbot",
+    "UrlHome": "https://nightbot.tv/",
+    "UrlUsername": "https://nightbot.tv/t/%s/commands",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Ninja Kiwi",
+    "UrlHome": "https://ninjakiwi.com/",
+    "UrlUsername": "https://ninjakiwi.com/profile/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "NintendoLife",
+    "UrlHome": "https://www.nintendolife.com/",
+    "UrlUsername": "https://www.nintendolife.com/users/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "NitroType",
+    "UrlHome": "https://www.nitrotype.com/",
+    "UrlUsername": "https://www.nitrotype.com/racer/%s",
+    "UnclaimedIfResponseHas": "\u003ctitle\u003eNitro Type | Competitive Typing Game | Race Your Friends\u003c/title\u003e",
+    "IsNSFW": false
+  },
+  {
+    "Name": "NotABug.org",
+    "UrlHome": "https://notabug.org/",
+    "UrlUsername": "https://notabug.org/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Nyaa.si",
+    "UrlHome": "https://nyaa.si/",
+    "UrlUsername": "https://nyaa.si/user/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "OGUsers",
+    "UrlHome": "https://ogu.gg/",
+    "UrlUsername": "https://ogu.gg/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "OpenStreetMap",
+    "UrlHome": "https://www.openstreetmap.org/",
+    "UrlUsername": "https://www.openstreetmap.org/user/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Opensource",
+    "UrlHome": "https://opensource.com/",
+    "UrlUsername": "https://opensource.com/users/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "OurDJTalk",
+    "UrlHome": "https://ourdjtalk.com/",
+    "UrlUsername": "https://ourdjtalk.com/members?username=%s",
+    "UnclaimedIfResponseHas": "The specified member cannot be found",
+    "IsNSFW": false
+  },
+  {
+    "Name": "PCGamer",
+    "UrlHome": "https://pcgamer.com",
+    "UrlUsername": "https://forums.pcgamer.com/members/?username=%s",
+    "UnclaimedIfResponseHas": "The specified member cannot be found. Please enter a member's entire name.",
+    "IsNSFW": false
+  },
+  {
+    "Name": "PSNProfiles.com",
+    "UrlHome": "https://psnprofiles.com/",
+    "UrlUsername": "https://psnprofiles.com/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Packagist",
+    "UrlHome": "https://packagist.org/",
+    "UrlUsername": "https://packagist.org/packages/%s/",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Pastebin",
+    "UrlHome": "https://pastebin.com/",
+    "UrlUsername": "https://pastebin.com/u/%s",
+    "UnclaimedIfResponseHas": "Not Found (#404)",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Patreon",
+    "UrlHome": "https://www.patreon.com/",
+    "UrlUsername": "https://www.patreon.com/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "PentesterLab",
+    "UrlHome": "https://pentesterlab.com/",
+    "UrlUsername": "https://pentesterlab.com/profile/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "PepperIT",
+    "UrlHome": "https://www.pepper.it",
+    "UrlUsername": "https://www.pepper.it/profile/%s/overview",
+    "UnclaimedIfResponseHas": "La pagina che hai provato a raggiungere non si trova qui",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Periscope",
+    "UrlHome": "https://www.periscope.tv/",
+    "UrlUsername": "https://www.periscope.tv/%s/",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Pinkbike",
+    "UrlHome": "https://www.pinkbike.com/",
+    "UrlUsername": "https://www.pinkbike.com/u/%s/",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "PlayStore",
+    "UrlHome": "https://play.google.com/store",
+    "UrlUsername": "https://play.google.com/store/apps/developer?id=%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "PocketStars",
+    "UrlHome": "https://pocketstars.com/",
+    "UrlUsername": "https://pocketstars.com/%s",
+    "UnclaimedIfResponseHas": "Join Your Favorite Adult Stars",
+    "IsNSFW": true
+  },
+  {
+    "Name": "Pokemon Showdown",
+    "UrlHome": "https://pokemonshowdown.com",
+    "UrlUsername": "https://pokemonshowdown.com/users/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Polarsteps",
+    "UrlHome": "https://polarsteps.com/",
+    "UrlUsername": "https://polarsteps.com/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Polygon",
+    "UrlHome": "https://www.polygon.com/",
+    "UrlUsername": "https://www.polygon.com/users/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Polymart",
+    "UrlHome": "https://polymart.org/",
+    "UrlUsername": "https://polymart.org/user/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Pornhub",
+    "UrlHome": "https://pornhub.com/",
+    "UrlUsername": "https://pornhub.com/users/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": true
+  },
+  {
+    "Name": "ProductHunt",
+    "UrlHome": "https://www.producthunt.com/",
+    "UrlUsername": "https://www.producthunt.com/@%s",
+    "UnclaimedIfResponseHas": "We seem to have lost this page",
+    "IsNSFW": false
+  },
+  {
+    "Name": "PromoDJ",
+    "UrlHome": "http://promodj.com/",
+    "UrlUsername": "http://promodj.com/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "PyPi",
+    "UrlHome": "https://pypi.org",
+    "UrlUsername": "https://pypi.org/user/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Rajce.net",
+    "UrlHome": "https://www.rajce.idnes.cz/",
+    "UrlUsername": "https://%s.rajce.idnes.cz/",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Rate Your Music",
+    "UrlHome": "https://rateyourmusic.com/",
+    "UrlUsername": "https://rateyourmusic.com/~%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Rclone Forum",
+    "UrlHome": "https://forum.rclone.org/",
+    "UrlUsername": "https://forum.rclone.org/u/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "RedTube",
+    "UrlHome": "https://www.redtube.com/",
+    "UrlUsername": "https://www.redtube.com/users/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": true
+  },
+  {
+    "Name": "Redbubble",
+    "UrlHome": "https://www.redbubble.com/",
+    "UrlUsername": "https://www.redbubble.com/people/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Reddit",
+    "UrlHome": "https://www.reddit.com/",
+    "UrlUsername": "https://www.reddit.com/user/%s",
+    "UnclaimedIfResponseHas": "Sorry, nobody on Reddit goes by that name.",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Reisefrage",
+    "UrlHome": "https://www.reisefrage.net/",
+    "UrlUsername": "https://www.reisefrage.net/nutzer/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Replit.com",
+    "UrlHome": "https://replit.com/",
+    "UrlUsername": "https://replit.com/@%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "ResearchGate",
+    "UrlHome": "https://www.researchgate.net/",
+    "UrlUsername": "https://www.researchgate.net/profile/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "ReverbNation",
+    "UrlHome": "https://www.reverbnation.com/",
+    "UrlUsername": "https://www.reverbnation.com/%s",
+    "UnclaimedIfResponseHas": "Sorry, we couldn't find that page",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Roblox",
+    "UrlHome": "https://www.roblox.com/",
+    "UrlUsername": "https://www.roblox.com/user.aspx?username=%s",
+    "UnclaimedIfResponseHas": "Page cannot be found or no longer exists",
+    "IsNSFW": false
+  },
+  {
+    "Name": "RocketTube",
+    "UrlHome": "https://www.rockettube.com/",
+    "UrlUsername": "https://www.rockettube.com/%s",
+    "UnclaimedIfResponseHas": "OOPS! Houston, we have a problem",
+    "IsNSFW": true
+  },
+  {
+    "Name": "RoyalCams",
+    "UrlHome": "https://royalcams.com",
+    "UrlUsername": "https://royalcams.com/profile/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "RubyGems",
+    "UrlHome": "https://rubygems.org/",
+    "UrlUsername": "https://rubygems.org/profiles/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Rumble",
+    "UrlHome": "https://rumble.com/",
+    "UrlUsername": "https://rumble.com/user/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "RuneScape",
+    "UrlHome": "https://www.runescape.com/",
+    "UrlUsername": "https://apps.runescape.com/runemetrics/app/overview/player/%s",
+    "UnclaimedIfResponseHas": "{\"error\":\"NO_PROFILE\",\"loggedIn\":\"false\"}",
+    "IsNSFW": false
+  },
+  {
+    "Name": "SWAPD",
+    "UrlHome": "https://swapd.co/",
+    "UrlUsername": "https://swapd.co/u/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Sbazar.cz",
+    "UrlHome": "https://www.sbazar.cz/",
+    "UrlUsername": "https://www.sbazar.cz/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Scratch",
+    "UrlHome": "https://scratch.mit.edu/",
+    "UrlUsername": "https://scratch.mit.edu/users/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Scribd",
+    "UrlHome": "https://www.scribd.com/",
+    "UrlUsername": "https://www.scribd.com/%s",
+    "UnclaimedIfResponseHas": "Page not found",
+    "IsNSFW": false
+  },
+  {
+    "Name": "ShitpostBot5000",
+    "UrlHome": "https://www.shitpostbot.com/",
+    "UrlUsername": "https://www.shitpostbot.com/user/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Shpock",
+    "UrlHome": "https://www.shpock.com/",
+    "UrlUsername": "https://www.shpock.com/shop/%s/items",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Signal",
+    "UrlHome": "https://community.signalusers.org",
+    "UrlUsername": "https://community.signalusers.org/u/%s",
+    "UnclaimedIfResponseHas": "Oops! That page doesn’t exist or is private.",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Sketchfab",
+    "UrlHome": "https://sketchfab.com/",
+    "UrlUsername": "https://sketchfab.com/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Slack",
+    "UrlHome": "https://slack.com",
+    "UrlUsername": "https://%s.slack.com",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Slant",
+    "UrlHome": "https://www.slant.co/",
+    "UrlUsername": "https://www.slant.co/users/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Slashdot",
+    "UrlHome": "https://slashdot.org",
+    "UrlUsername": "https://slashdot.org/~%s",
+    "UnclaimedIfResponseHas": "user you requested does not exist",
+    "IsNSFW": false
+  },
+  {
+    "Name": "SlideShare",
+    "UrlHome": "https://slideshare.net/",
+    "UrlUsername": "https://slideshare.net/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Slides",
+    "UrlHome": "https://slides.com/",
+    "UrlUsername": "https://slides.com/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "SmugMug",
+    "UrlHome": "https://smugmug.com",
+    "UrlUsername": "https://%s.smugmug.com",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Smule",
+    "UrlHome": "https://www.smule.com/",
+    "UrlUsername": "https://www.smule.com/%s",
+    "UnclaimedIfResponseHas": "Smule | Page Not Found (404)",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Snapchat",
+    "UrlHome": "https://www.snapchat.com",
+    "UrlUsername": "https://www.snapchat.com/add/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "SoundCloud",
+    "UrlHome": "https://soundcloud.com/",
+    "UrlUsername": "https://soundcloud.com/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "SourceForge",
+    "UrlHome": "https://sourceforge.net/",
+    "UrlUsername": "https://sourceforge.net/u/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "SoylentNews",
+    "UrlHome": "https://soylentnews.org",
+    "UrlUsername": "https://soylentnews.org/~%s",
+    "UnclaimedIfResponseHas": "The user you requested does not exist, no matter how much you wish this might be the case.",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Speedrun.com",
+    "UrlHome": "https://speedrun.com/",
+    "UrlUsername": "https://speedrun.com/user/%s",
+    "UnclaimedIfResponseHas": "Not found",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Spells8",
+    "UrlHome": "https://spells8.com",
+    "UrlUsername": "https://forum.spells8.com/u/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Splice",
+    "UrlHome": "https://splice.com/",
+    "UrlUsername": "https://splice.com/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Splits.io",
+    "UrlHome": "https://splits.io",
+    "UrlUsername": "https://splits.io/users/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Sporcle",
+    "UrlHome": "https://www.sporcle.com/",
+    "UrlUsername": "https://www.sporcle.com/user/%s/people",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Sportlerfrage",
+    "UrlHome": "https://www.sportlerfrage.net/",
+    "UrlUsername": "https://www.sportlerfrage.net/nutzer/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "SportsRU",
+    "UrlHome": "https://www.sports.ru/",
+    "UrlUsername": "https://www.sports.ru/profile/%s/",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Spotify",
+    "UrlHome": "https://open.spotify.com/",
+    "UrlUsername": "https://open.spotify.com/user/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Star Citizen",
+    "UrlHome": "https://robertsspaceindustries.com/",
+    "UrlUsername": "https://robertsspaceindustries.com/citizens/%s",
+    "UnclaimedIfResponseHas": "404",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Steam Community (Group)",
+    "UrlHome": "https://steamcommunity.com/",
+    "UrlUsername": "https://steamcommunity.com/groups/%s",
+    "UnclaimedIfResponseHas": "No group could be retrieved for the given URL",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Steam Community (User)",
+    "UrlHome": "https://steamcommunity.com/",
+    "UrlUsername": "https://steamcommunity.com/id/%s/",
+    "UnclaimedIfResponseHas": "The specified profile could not be found",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Strava",
+    "UrlHome": "https://www.strava.com/",
+    "UrlUsername": "https://www.strava.com/athletes/%s",
+    "UnclaimedIfResponseHas": "Strava | Running, Cycling \u0026amp; Hiking App - Train, Track \u0026amp; Share",
+    "IsNSFW": false
+  },
+  {
+    "Name": "SublimeForum",
+    "UrlHome": "https://forum.sublimetext.com/",
+    "UrlUsername": "https://forum.sublimetext.com/u/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "TETR.IO",
+    "UrlHome": "https://tetr.io",
+    "UrlUsername": "https://ch.tetr.io/u/%s",
+    "UnclaimedIfResponseHas": "No such user!",
+    "IsNSFW": false
+  },
+  {
+    "Name": "TLDR Legal",
+    "UrlHome": "https://tldrlegal.com/",
+    "UrlUsername": "https://tldrlegal.com/users/%s/",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "TRAKTRAIN",
+    "UrlHome": "https://traktrain.com/",
+    "UrlUsername": "https://traktrain.com/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Telegram",
+    "UrlHome": "https://t.me/",
+    "UrlUsername": "https://t.me/%s",
+    "UnclaimedIfResponseHas": "\u003ctitle\u003eTelegram Messenger\u003c/title\u003e",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Tellonym.me",
+    "UrlHome": "https://tellonym.me/",
+    "UrlUsername": "https://tellonym.me/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Tenor",
+    "UrlHome": "https://tenor.com/",
+    "UrlUsername": "https://tenor.com/users/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "ThemeForest",
+    "UrlHome": "https://themeforest.net/",
+    "UrlUsername": "https://themeforest.net/user/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "TnAFlix",
+    "UrlHome": "https://www.tnaflix.com/",
+    "UrlUsername": "https://www.tnaflix.com/profile/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": true
+  },
+  {
+    "Name": "TorrentGalaxy",
+    "UrlHome": "https://torrentgalaxy.to/",
+    "UrlUsername": "https://torrentgalaxy.to/profile/%s",
+    "UnclaimedIfResponseHas": "\u003ctitle\u003eTGx:Can't show details\u003c/title\u003e",
+    "IsNSFW": false
+  },
+  {
+    "Name": "TradingView",
+    "UrlHome": "https://www.tradingview.com/",
+    "UrlUsername": "https://www.tradingview.com/u/%s/",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Trakt",
+    "UrlHome": "https://www.trakt.tv/",
+    "UrlUsername": "https://www.trakt.tv/users/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "TrashboxRU",
+    "UrlHome": "https://trashbox.ru/",
+    "UrlUsername": "https://trashbox.ru/users/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Trawelling",
+    "UrlHome": "https://traewelling.de/",
+    "UrlUsername": "https://traewelling.de/@%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Trello",
+    "UrlHome": "https://trello.com/",
+    "UrlUsername": "https://trello.com/%s",
+    "UnclaimedIfResponseHas": "model not found",
+    "IsNSFW": false
+  },
+  {
+    "Name": "TryHackMe",
+    "UrlHome": "https://tryhackme.com/",
+    "UrlUsername": "https://tryhackme.com/p/%s",
+    "UnclaimedIfResponseHas": "{\"success\":false}",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Tuna",
+    "UrlHome": "https://tuna.voicemod.net/",
+    "UrlUsername": "https://tuna.voicemod.net/user/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Tweakers",
+    "UrlHome": "https://tweakers.net",
+    "UrlUsername": "https://tweakers.net/gallery/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Twitch",
+    "UrlHome": "https://www.twitch.tv/",
+    "UrlUsername": "https://www.twitch.tv/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Twitter",
+    "UrlHome": "https://x.com/",
+    "UrlUsername": "https://x.com/%s",
+    "UnclaimedIfResponseHas": "\u003cdiv class=\"error-panel\"\u003e\u003cspan\u003eUser ",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Typeracer",
+    "UrlHome": "https://typeracer.com",
+    "UrlUsername": "https://data.typeracer.com/pit/profile?user=%s",
+    "UnclaimedIfResponseHas": "Profile Not Found",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Ultimate-Guitar",
+    "UrlHome": "https://ultimate-guitar.com/",
+    "UrlUsername": "https://ultimate-guitar.com/u/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Unsplash",
+    "UrlHome": "https://unsplash.com/",
+    "UrlUsername": "https://unsplash.com/@%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Untappd",
+    "UrlHome": "https://untappd.com/",
+    "UrlUsername": "https://untappd.com/user/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "VK",
+    "UrlHome": "https://vk.com/",
+    "UrlUsername": "https://vk.com/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "VSCO",
+    "UrlHome": "https://vsco.co/",
+    "UrlUsername": "https://vsco.co/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Velomania",
+    "UrlHome": "https://forum.velomania.ru/",
+    "UrlUsername": "https://forum.velomania.ru/member.php?username=%s",
+    "UnclaimedIfResponseHas": "Пользователь не зарегистрирован и не имеет профиля для просмотра.",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Venmo",
+    "UrlHome": "https://venmo.com/",
+    "UrlUsername": "https://account.venmo.com/u/%s",
+    "UnclaimedIfResponseHas": "Venmo | Page Not Found",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Vero",
+    "UrlHome": "https://vero.co/",
+    "UrlUsername": "https://vero.co/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Vimeo",
+    "UrlHome": "https://vimeo.com/",
+    "UrlUsername": "https://vimeo.com/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "VirusTotal",
+    "UrlHome": "https://www.virustotal.com/",
+    "UrlUsername": "https://www.virustotal.com/gui/user/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "WICG Forum",
+    "UrlHome": "https://discourse.wicg.io/",
+    "UrlUsername": "https://discourse.wicg.io/u/%s/summary",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Warrior Forum",
+    "UrlHome": "https://www.warriorforum.com/",
+    "UrlUsername": "https://www.warriorforum.com/members/%s.html",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Wattpad",
+    "UrlHome": "https://www.wattpad.com/",
+    "UrlUsername": "https://www.wattpad.com/user/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "WebNode",
+    "UrlHome": "https://www.webnode.cz/",
+    "UrlUsername": "https://%s.webnode.cz/",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Weblate",
+    "UrlHome": "https://hosted.weblate.org/",
+    "UrlUsername": "https://hosted.weblate.org/user/%s/",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Weebly",
+    "UrlHome": "https://weebly.com/",
+    "UrlUsername": "https://%s.weebly.com/",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Wikidot",
+    "UrlHome": "http://www.wikidot.com/",
+    "UrlUsername": "http://www.wikidot.com/user:info/%s",
+    "UnclaimedIfResponseHas": "User does not exist.",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Wikipedia",
+    "UrlHome": "https://www.wikipedia.org/",
+    "UrlUsername": "https://en.wikipedia.org/wiki/Special:CentralAuth/%s?uselang=qqx",
+    "UnclaimedIfResponseHas": "centralauth-admin-nonexistent:",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Windy",
+    "UrlHome": "https://windy.com/",
+    "UrlUsername": "https://community.windy.com/user/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Wix",
+    "UrlHome": "https://wix.com/",
+    "UrlUsername": "https://%s.wix.com",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "WolframalphaForum",
+    "UrlHome": "https://community.wolfram.com/",
+    "UrlUsername": "https://community.wolfram.com/web/%s/home",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "WordPress",
+    "UrlHome": "https://wordpress.com",
+    "UrlUsername": "https://%s.wordpress.com/",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "WordPressOrg",
+    "UrlHome": "https://wordpress.org/",
+    "UrlUsername": "https://profiles.wordpress.org/%s/",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Wordnik",
+    "UrlHome": "https://www.wordnik.com/",
+    "UrlUsername": "https://www.wordnik.com/users/%s",
+    "UnclaimedIfResponseHas": "Page Not Found",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Wykop",
+    "UrlHome": "https://www.wykop.pl",
+    "UrlUsername": "https://www.wykop.pl/ludzie/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Xbox Gamertag",
+    "UrlHome": "https://xboxgamertag.com/",
+    "UrlUsername": "https://xboxgamertag.com/search/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Xvideos",
+    "UrlHome": "https://xvideos.com/",
+    "UrlUsername": "https://xvideos.com/profiles/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": true
+  },
+  {
+    "Name": "YandexMusic",
+    "UrlHome": "https://music.yandex",
+    "UrlUsername": "https://music.yandex/users/%s/playlists",
+    "UnclaimedIfResponseHas": "Ошибка 404",
+    "IsNSFW": false
+  },
+  {
+    "Name": "YouNow",
+    "UrlHome": "https://www.younow.com/",
+    "UrlUsername": "https://www.younow.com/%s/",
+    "UnclaimedIfResponseHas": "No users found",
+    "IsNSFW": false
+  },
+  {
+    "Name": "YouPic",
+    "UrlHome": "https://youpic.com/",
+    "UrlUsername": "https://youpic.com/photographer/%s/",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "YouPorn",
+    "UrlHome": "https://youporn.com",
+    "UrlUsername": "https://youporn.com/uservids/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": true
+  },
+  {
+    "Name": "YouTube",
+    "UrlHome": "https://www.youtube.com/",
+    "UrlUsername": "https://www.youtube.com/@%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "Zhihu",
+    "UrlHome": "https://www.zhihu.com/",
+    "UrlUsername": "https://www.zhihu.com/people/%s",
+    "UnclaimedIfResponseHas": "404",
+    "IsNSFW": false
+  },
+  {
+    "Name": "akniga",
+    "UrlHome": "https://akniga.org/profile/blue/",
+    "UrlUsername": "https://akniga.org/profile/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "authorSTREAM",
+    "UrlHome": "http://www.authorstream.com/",
+    "UrlUsername": "http://www.authorstream.com/%s/",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "babyRU",
+    "UrlHome": "https://www.baby.ru/",
+    "UrlUsername": "https://www.baby.ru/u/%s/",
+    "UnclaimedIfResponseHas": "Страница, которую вы искали, не найдена",
+    "IsNSFW": false
+  },
+  {
+    "Name": "babyblogRU",
+    "UrlHome": "https://www.babyblog.ru/",
+    "UrlUsername": "https://www.babyblog.ru/user/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "chaos.social",
+    "UrlHome": "https://chaos.social/",
+    "UrlUsername": "https://chaos.social/@%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "couchsurfing",
+    "UrlHome": "https://www.couchsurfing.com/",
+    "UrlUsername": "https://www.couchsurfing.com/people/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "d3RU",
+    "UrlHome": "https://d3.ru/",
+    "UrlUsername": "https://d3.ru/user/%s/posts",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "dailykos",
+    "UrlHome": "https://www.dailykos.com",
+    "UrlUsername": "https://www.dailykos.com/user/%s",
+    "UnclaimedIfResponseHas": "{\"result\":true,\"message\":null}",
+    "IsNSFW": false
+  },
+  {
+    "Name": "datingRU",
+    "UrlHome": "http://dating.ru",
+    "UrlUsername": "http://dating.ru/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "devRant",
+    "UrlHome": "https://devrant.com/",
+    "UrlUsername": "https://devrant.com/users/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "drive2",
+    "UrlHome": "https://www.drive2.ru/",
+    "UrlUsername": "https://www.drive2.ru/users/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "eGPU",
+    "UrlHome": "https://egpu.io/",
+    "UrlUsername": "https://egpu.io/forums/profile/%s/",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "eintracht",
+    "UrlHome": "https://eintracht.de",
+    "UrlUsername": "https://community.eintracht.de/fans/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "fixya",
+    "UrlHome": "https://www.fixya.com",
+    "UrlUsername": "https://www.fixya.com/users/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "fl",
+    "UrlHome": "https://www.fl.ru/",
+    "UrlUsername": "https://www.fl.ru/users/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "forum_guns",
+    "UrlHome": "https://forum.guns.ru/",
+    "UrlUsername": "https://forum.guns.ru/forummisc/blog/%s",
+    "UnclaimedIfResponseHas": "action=https://forum.guns.ru/forummisc/blog/search",
+    "IsNSFW": false
+  },
+  {
+    "Name": "freecodecamp",
+    "UrlHome": "https://www.freecodecamp.org/",
+    "UrlUsername": "https://www.freecodecamp.org/%s",
+    "UnclaimedIfResponseHas": "{}",
+    "IsNSFW": false
+  },
+  {
+    "Name": "furaffinity",
+    "UrlHome": "https://www.furaffinity.net",
+    "UrlUsername": "https://www.furaffinity.net/user/%s",
+    "UnclaimedIfResponseHas": "This user cannot be found.",
+    "IsNSFW": false
+  },
+  {
+    "Name": "geocaching",
+    "UrlHome": "https://www.geocaching.com/",
+    "UrlUsername": "https://www.geocaching.com/p/default.aspx?u=%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "gfycat",
+    "UrlHome": "https://gfycat.com/",
+    "UrlUsername": "https://gfycat.com/@%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "habr",
+    "UrlHome": "https://habr.com/",
+    "UrlUsername": "https://habr.com/ru/users/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "hackster",
+    "UrlHome": "https://www.hackster.io",
+    "UrlUsername": "https://www.hackster.io/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "hunting",
+    "UrlHome": "https://www.hunting.ru/forum/",
+    "UrlUsername": "https://www.hunting.ru/forum/members/?username=%s",
+    "UnclaimedIfResponseHas": "Указанный пользователь не найден. Пожалуйста, введите другое имя.",
+    "IsNSFW": false
+  },
+  {
+    "Name": "iMGSRC.RU",
+    "UrlHome": "https://imgsrc.ru/",
+    "UrlUsername": "https://imgsrc.ru/main/user.php?user=%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "igromania",
+    "UrlHome": "http://forum.igromania.ru/",
+    "UrlUsername": "http://forum.igromania.ru/member.php?username=%s",
+    "UnclaimedIfResponseHas": "Пользователь не зарегистрирован и не имеет профиля для просмотра.",
+    "IsNSFW": false
+  },
+  {
+    "Name": "interpals",
+    "UrlHome": "https://www.interpals.net/",
+    "UrlUsername": "https://www.interpals.net/%s",
+    "UnclaimedIfResponseHas": "The requested user does not exist or is inactive",
+    "IsNSFW": false
+  },
+  {
+    "Name": "irecommend",
+    "UrlHome": "https://irecommend.ru/",
+    "UrlUsername": "https://irecommend.ru/users/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "jbzd.com.pl",
+    "UrlHome": "https://jbzd.com.pl/",
+    "UrlUsername": "https://jbzd.com.pl/uzytkownik/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "jeuxvideo",
+    "UrlHome": "https://www.jeuxvideo.com",
+    "UrlUsername": "https://www.jeuxvideo.com/profil/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "kofi",
+    "UrlHome": "https://ko-fi.com",
+    "UrlUsername": "https://ko-fi.com/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "kwork",
+    "UrlHome": "https://www.kwork.ru/",
+    "UrlUsername": "https://kwork.ru/user/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "labpentestit",
+    "UrlHome": "https://lab.pentestit.ru/",
+    "UrlUsername": "https://lab.pentestit.ru/profile/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "last.fm",
+    "UrlHome": "https://last.fm/",
+    "UrlUsername": "https://last.fm/user/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "leasehackr",
+    "UrlHome": "https://forum.leasehackr.com/",
+    "UrlUsername": "https://forum.leasehackr.com/u/%s/summary/",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "livelib",
+    "UrlHome": "https://www.livelib.ru/",
+    "UrlUsername": "https://www.livelib.ru/reader/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "mastodon.cloud",
+    "UrlHome": "https://mastodon.cloud/",
+    "UrlUsername": "https://mastodon.cloud/@%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "mastodon.social",
+    "UrlHome": "https://chaos.social/",
+    "UrlUsername": "https://mastodon.social/@%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "mastodon.technology",
+    "UrlHome": "https://mastodon.xyz/",
+    "UrlUsername": "https://mastodon.technology/@%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "mastodon.xyz",
+    "UrlHome": "https://mastodon.xyz/",
+    "UrlUsername": "https://mastodon.xyz/@%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "mercadolivre",
+    "UrlHome": "https://www.mercadolivre.com.br",
+    "UrlUsername": "https://www.mercadolivre.com.br/perfil/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "minds",
+    "UrlHome": "https://www.minds.com",
+    "UrlUsername": "https://www.minds.com/%s/",
+    "UnclaimedIfResponseHas": "\"valid\":true",
+    "IsNSFW": false
+  },
+  {
+    "Name": "moikrug",
+    "UrlHome": "https://moikrug.ru/",
+    "UrlUsername": "https://moikrug.ru/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "mstdn.io",
+    "UrlHome": "https://mstdn.io/",
+    "UrlUsername": "https://mstdn.io/@%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "nairaland.com",
+    "UrlHome": "https://www.nairaland.com/",
+    "UrlUsername": "https://www.nairaland.com/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "nnRU",
+    "UrlHome": "https://www.nn.ru/",
+    "UrlUsername": "https://%s.www.nn.ru/",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "note",
+    "UrlHome": "https://note.com/",
+    "UrlUsername": "https://note.com/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "npm",
+    "UrlHome": "https://www.npmjs.com/",
+    "UrlUsername": "https://www.npmjs.com/~%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "opennet",
+    "UrlHome": "https://www.opennet.ru/",
+    "UrlUsername": "https://www.opennet.ru/~%s",
+    "UnclaimedIfResponseHas": "Имя участника не найдено",
+    "IsNSFW": false
+  },
+  {
+    "Name": "osu!",
+    "UrlHome": "https://osu.ppy.sh/",
+    "UrlUsername": "https://osu.ppy.sh/users/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "phpRU",
+    "UrlHome": "https://php.ru/forum/",
+    "UrlUsername": "https://php.ru/forum/members/?username=%s",
+    "UnclaimedIfResponseHas": "Указанный пользователь не найден. Пожалуйста, введите другое имя.",
+    "IsNSFW": false
+  },
+  {
+    "Name": "pikabu",
+    "UrlHome": "https://pikabu.ru/",
+    "UrlUsername": "https://pikabu.ru/@%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "pr0gramm",
+    "UrlHome": "https://pr0gramm.com/",
+    "UrlUsername": "https://pr0gramm.com/user/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "prog.hu",
+    "UrlHome": "https://prog.hu/",
+    "UrlUsername": "https://prog.hu/azonosito/info/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "queer.af",
+    "UrlHome": "https://queer.af/",
+    "UrlUsername": "https://queer.af/@%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "satsisRU",
+    "UrlHome": "https://satsis.info/",
+    "UrlUsername": "https://satsis.info/user/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "sessionize",
+    "UrlHome": "https://sessionize.com/",
+    "UrlUsername": "https://sessionize.com/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "skyrock",
+    "UrlHome": "https://skyrock.com/",
+    "UrlUsername": "https://%s.skyrock.com/",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "social.tchncs.de",
+    "UrlHome": "https://social.tchncs.de/",
+    "UrlUsername": "https://social.tchncs.de/@%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "spletnik",
+    "UrlHome": "https://spletnik.ru/",
+    "UrlUsername": "https://spletnik.ru/user/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "svidbook",
+    "UrlHome": "https://www.svidbook.ru/",
+    "UrlUsername": "https://www.svidbook.ru/user/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "toster",
+    "UrlHome": "https://www.toster.ru/",
+    "UrlUsername": "https://www.toster.ru/user/%s/answers",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "uid",
+    "UrlHome": "https://uid.me/",
+    "UrlUsername": "http://uid.me/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "wiki.vg",
+    "UrlHome": "https://wiki.vg/",
+    "UrlUsername": "https://wiki.vg/User:%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  },
+  {
+    "Name": "xHamster",
+    "UrlHome": "https://xhamster.com",
+    "UrlUsername": "https://xhamster.com/users/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": true
+  },
+  {
+    "Name": "znanylekarz.pl",
+    "UrlHome": "https://znanylekarz.pl",
+    "UrlUsername": "https://www.znanylekarz.pl/%s",
+    "UnclaimedIfResponseHas": "",
+    "IsNSFW": false
+  }
+]

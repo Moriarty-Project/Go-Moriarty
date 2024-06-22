@@ -6,6 +6,8 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
+const jsonFile = "resources/data.json"
+
 func TestSiteCheckWithStatus(t *testing.T) {
 	ubse := &StringBasedSiteElement{
 		Name:                   "academia.edu",
@@ -33,7 +35,7 @@ func TestSiteCheckWithResponse(t *testing.T) {
 }
 
 func TestLoadingElements(t *testing.T) {
-	jsonFile := "resources/data.json"
+
 	ubses, err := LoadAllSiteElements(jsonFile)
 	assert.NoError(t, err)
 	ubse := &StringBasedSiteElement{
@@ -46,7 +48,7 @@ func TestLoadingElements(t *testing.T) {
 	assert.Equal(t, ubse, ubses[0])
 	siteTesters, err := LoadAllSiteUserTesters(jsonFile)
 	assert.NoError(t, err)
-	assert.Equal(t, ubse, siteTesters["Apple Discussions"].SiteElement)
+	assert.Equal(t, ubse, siteTesters["Apple Discussions"].dataElement)
 
 	sut := siteTesters["Apple Discussions"]
 	assert.True(t, sut.TestSiteHas(false, "helloWorld")[0])
@@ -68,5 +70,19 @@ func BenchmarkWithCache(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		sut.TestSiteHas(true, "Name")
 	}
+}
 
+// test sherlock's whole functionality!
+func TestSherlock(t *testing.T) {
+	user := NewUserRecordings(nil, nil, nil)
+	user.AddKnownUsername("helloWorld")
+
+	sher, err := NewSherlock(jsonFile)
+	if err != nil {
+		t.Fatal(err)
+	}
+	sher.AssignNewUser(user)
+	knownSites, _, _, err := sher.TrackUser(true)
+	assert.NoError(t, err)
+	assert.Contains(t, knownSites, "Apple Discussions")
 }

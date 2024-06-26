@@ -3,6 +3,8 @@ package sherlock
 import (
 	"encoding/json"
 	"fmt"
+	"io"
+	"net/http"
 	"os"
 	"path"
 	"sort"
@@ -89,4 +91,42 @@ type StringBasedSiteElement struct {
 	UrlUsername            string //the url that has a way to format in the username
 	UnclaimedIfResponseHas string //if the response text has this, then it is unclaimed.
 	IsNSFW                 bool   //is this site NSFW
+}
+
+// returns nil if nothing is found!
+func (sbse *StringBasedSiteElement) GetData(searchCriteria string) *DataTestResults {
+	if !sbse.TestSiteHas(searchCriteria) {
+		// we dont have it, so return nil
+		return nil
+	}
+	// we have it!
+	dtr := NewDataTestResults(sbse.Name)
+	dtr.Add("Valid Name", searchCriteria)
+	dtr.Add("Home URL", sbse.UrlHome)
+	dtr.Add("Found At", fmt.Sprintf(sbse.UrlUsername, searchCriteria))
+	return dtr
+}
+
+// Test if the site has any positive response from this name
+func (sbse *StringBasedSiteElement) TestSiteHas(name string) bool {
+	response, err := http.Get(fmt.Sprintf(sbse.UrlUsername, name))
+	if err != nil {
+		return false
+	}
+	// now we need to parse the response to see if it was found.
+
+	// assume that a 404 is always a fail. So we check that it's all 200's
+	if response.StatusCode != 200 {
+		return false
+	}
+	// check if it was found properly. We do this by checking if it doesn't have the false case string in its body.
+	found := true
+	if sbse.UnclaimedIfResponseHas != "" {
+		responseData, err := io.ReadAll(response.Body)
+		if err != nil {
+			return false
+		}
+		found = !strings.Contains(string(responseData), sbse.UnclaimedIfResponseHas)
+	}
+	return found
 }

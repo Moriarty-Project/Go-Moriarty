@@ -25,7 +25,7 @@ func (s *Sherlock) AssignNewUser(user *UserRecordings) {
 }
 
 // get the results from the user as channels
-func (s *Sherlock) GetUserResults() (knownChan, likelyChan, possibleChan chan string, doneSignal chan bool) {
+func (s *Sherlock) GetUserResultsFromSites() (knownChan, likelyChan, possibleChan chan string, doneSignal chan bool) {
 	bufferSize := len(s.siteTesters)
 
 	knownChan = make(chan string, bufferSize)
@@ -77,7 +77,7 @@ func (s *Sherlock) GetUserResults() (knownChan, likelyChan, possibleChan chan st
 
 // attempts to
 func (s *Sherlock) TrackUser() (sitesFoundByKnown, sitesFoundByLikely, sitesFoundByPossible []string) {
-	known, likely, possible, done := s.GetUserResults()
+	known, likely, possible, done := s.GetUserResultsFromSites()
 	<-done
 	// we start it right away, then just wait till it's done.
 	sitesFoundByKnown = make([]string, len(known))

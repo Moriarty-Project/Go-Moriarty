@@ -2,16 +2,13 @@ package sherlock
 
 import (
 	"fmt"
-	"io"
-	"net/http"
-	"strings"
 	"sync"
 )
 
 // this represents the element that actually checks each data clustering.
 type DataToUserTester struct {
 	dataElement    *StringBasedSiteElement
-	cache          map[string]string //a cache of the responses from a username
+	cache          map[string]*DataTestResults //a cache of the responses from a username
 	nameFoundCache map[string]bool
 	lock           *sync.Mutex
 }
@@ -19,7 +16,7 @@ type DataToUserTester struct {
 func NewSiteUserTester(ubse *StringBasedSiteElement) *DataToUserTester {
 	return &DataToUserTester{
 		dataElement:    ubse,
-		cache:          map[string]string{},
+		cache:          map[string]*DataTestResults{},
 		nameFoundCache: map[string]bool{},
 		lock:           &sync.Mutex{},
 	}
@@ -31,7 +28,7 @@ func (sut *DataToUserTester) GetSiteName() string {
 }
 
 // test all of these with ourselves.
-func (sut *DataToUserTester) TestSiteWith(user *UserRecordings) (fromKnow, fromLikely, fromPossible []*StringBasedSiteElement, err error) {
+func (sut *DataToUserTester) TestSiteWith(user *UserRecordings) (fromKnow, fromLikely, fromPossible []*DataTestResults, err error) {
 	if user == nil {
 		err = fmt.Errorf("no user reference given")
 		return
@@ -40,9 +37,9 @@ func (sut *DataToUserTester) TestSiteWith(user *UserRecordings) (fromKnow, fromL
 		err = fmt.Errorf("no site reference found")
 		return
 	}
-	fromKnow = []*StringBasedSiteElement{}
-	fromLikely = []*StringBasedSiteElement{}
-	fromPossible = []*StringBasedSiteElement{}
+	fromKnow = []*DataTestResults{}
+	fromLikely = []*DataTestResults{}
+	fromPossible = []*DataTestResults{}
 	sut.lock.Lock()
 	defer sut.lock.Unlock()
 	if sut.dataElement.IsNSFW && !user.CheckingNSFW {
@@ -51,17 +48,17 @@ func (sut *DataToUserTester) TestSiteWith(user *UserRecordings) (fromKnow, fromL
 	}
 	for _, name := range append(user.KnownUsernames, user.KnownEmails...) {
 		if sut.unsafeTestSiteHas(name) {
-			fromKnow = append(fromKnow, sut.dataElement)
+			fromKnow = append(fromKnow, sut.cache[name])
 		}
 	}
 	for _, name := range append(user.LikelyUsernames, user.LikelyEmails...) {
 		if sut.unsafeTestSiteHas(name) {
-			fromLikely = append(fromLikely, sut.dataElement)
+			fromLikely = append(fromLikely, sut.cache[name])
 		}
 	}
 	for _, name := range append(user.PossibleUsernames, user.PossibleEmails...) {
 		if sut.unsafeTestSiteHas(name) {
-			fromPossible = append(fromPossible, sut.dataElement)
+			fromPossible = append(fromPossible, sut.cache[name])
 		}
 	}
 
@@ -95,32 +92,28 @@ func (sut *DataToUserTester) TestSiteHasAny(names ...string) bool {
 	return false
 }
 
+// gets the data test results from
+func (sut *DataToUserTester) GetSiteResults(names ...string) *DataTestResults {
+	sut.lock.Lock()
+	defer sut.lock.Unlock()
+	var ans *DataTestResults
+	for _, name := range names {
+		if sut.unsafeTestSiteHas(name) {
+			ans = CombineDataTestResults(ans, sut.cache[name])
+		}
+	}
+	return ans
+}
+
 // WARNING: this is not thread safe! use with caution!
-// TODO: this should be split in half. With caching staying here, and active checking moving to the data handler.
 func (sut *DataToUserTester) unsafeTestSiteHas(name string) bool {
 	if val, hasVal := sut.nameFoundCache[name]; hasVal {
 		return val
 	}
-	response, err := http.Get(fmt.Sprintf(sut.dataElement.UrlUsername, name))
-	if err != nil {
-		return false
+	found := sut.dataElement.GetData(name)
+	sut.nameFoundCache[name] = found != nil
+	if found != nil {
+		sut.cache[name] = found
 	}
-	// now we need to parse the response to see if it was found.
-
-	// assume that a 404 is always a fail. So we check that it's all 200's
-	if response.StatusCode != 200 {
-		return false
-	}
-
-	// check if it was found properly. We do this by checking if it doesn't have the false case string in its body.
-	found := true
-	if sut.dataElement.UnclaimedIfResponseHas != "" {
-		responseData, err := io.ReadAll(response.Body)
-		if err != nil {
-			return false
-		}
-		found = !strings.Contains(string(responseData), sut.dataElement.UnclaimedIfResponseHas)
-	}
-	sut.nameFoundCache[name] = found
-	return found
+	return found != nil
 }

@@ -129,7 +129,7 @@ func TestSherlockChannels(t *testing.T) {
 	}
 	sher.AssignNewUser(user)
 
-	shouldBeFull, shouldBeEmpty1, shouldBeEmpty2, done := sher.GetUserResults()
+	shouldBeFull, shouldBeEmpty1, shouldBeEmpty2, done := sher.GetUserResultsFromSites()
 	<-done
 	full := make([]string, 0, len(shouldBeFull))
 	for len(shouldBeFull) != 0 {
@@ -150,7 +150,7 @@ func TestSherlockChannels(t *testing.T) {
 	// now test it again but with the names moved to likely
 	user.LikelyUsernames = user.KnownUsernames
 	user.KnownUsernames = []string{}
-	shouldBeEmpty1, shouldBeFull, shouldBeEmpty2, done = sher.GetUserResults()
+	shouldBeEmpty1, shouldBeFull, shouldBeEmpty2, done = sher.GetUserResultsFromSites()
 	<-done
 	full = make([]string, 0, len(shouldBeFull))
 	for len(shouldBeFull) != 0 {
@@ -171,7 +171,7 @@ func TestSherlockChannels(t *testing.T) {
 	// and now with possible
 	user.PossibleUsernames = user.LikelyUsernames
 	user.LikelyUsernames = []string{}
-	shouldBeEmpty1, shouldBeEmpty2, shouldBeFull, done = sher.GetUserResults()
+	shouldBeEmpty1, shouldBeEmpty2, shouldBeFull, done = sher.GetUserResultsFromSites()
 	<-done
 	full = make([]string, 0, len(shouldBeFull))
 	for len(shouldBeFull) != 0 {

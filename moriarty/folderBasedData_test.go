@@ -1,4 +1,4 @@
-package sherlock
+package moriarty
 
 import (
 	"testing"
@@ -19,7 +19,7 @@ func TestFolderBasedData(t *testing.T) {
 		t.Fail()
 	}
 	// load some dummy data
-	err := fbd.LoadAllData("sherlock/resources/testingData/")
+	err := fbd.LoadAllData("moriarty/resources/testingData/")
 	assert.NoError(t, err)
 
 	// now we can test searching real data

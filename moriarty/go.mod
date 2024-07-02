@@ -1,4 +1,4 @@
-module sherlock
+module moriarty
 
 go 1.22.1
 

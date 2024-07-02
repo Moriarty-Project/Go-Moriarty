@@ -1,54 +1,54 @@
-package sherlock
+package moriarty
 
 import (
 	"fmt"
 	"sync"
 )
 
-type Sherlock struct {
+type Moriarty struct {
 	siteTesters  map[string]*DataToUserTester //the site structures we test against.
 	trackingUser *UserRecordings              // the user profile.
 }
 
-func NewSherlock(filePath string) (*Sherlock, error) {
+func NewMoriarty(filePath string) (*Moriarty, error) {
 	testers, err := LoadAllSiteUserTesters(filePath)
 	if err != nil {
 		return nil, err
 	}
-	s := &Sherlock{
+	s := &Moriarty{
 		siteTesters: testers,
 	}
 	return s, nil
 }
-func (s *Sherlock) AssignNewUser(user *UserRecordings) {
+func (s *Moriarty) AssignNewUser(user *UserRecordings) {
 	s.trackingUser = user
 }
 
 // get the results from the user as channels
-func (s *Sherlock) GetUserResultsFromSites() (knownChan, likelyChan, possibleChan chan string, doneSignal chan bool) {
-	bufferSize := len(s.siteTesters)
+func (m *Moriarty) GetUserResultsFromSites() (knownChan, likelyChan, possibleChan chan string, doneSignal chan bool) {
+	bufferSize := len(m.siteTesters)
 
 	knownChan = make(chan string, bufferSize)
 	likelyChan = make(chan string, bufferSize)
 	possibleChan = make(chan string, bufferSize)
 
 	wg := &sync.WaitGroup{}
-	wg.Add(len(s.siteTesters))
+	wg.Add(len(m.siteTesters))
 	doneSignal = make(chan bool, 1)
 
 	// get the important user info setup
-	user := s.trackingUser
+	user := m.trackingUser
 	knownNames := append(user.KnownEmails, user.KnownUsernames...)
 	likelyNames := append(user.LikelyEmails, user.LikelyUsernames...)
 	possibleNames := append(user.PossibleEmails, user.PossibleUsernames...)
 
 	// now, we go tracking.
 	fmt.Println("now starting the go routines")
-	for sutName, sut := range s.siteTesters {
+	for sutName, sut := range m.siteTesters {
 		if sut.IsNSFW() && !user.CheckingNSFW {
 			wg.Done()
 			continue
-			// we arent checking nsfw sites this time
+			// we aren't checking nsfw sites this time
 		}
 		go func(sut *DataToUserTester, sutName string) {
 			if sut.TestSiteHasAny(knownNames...) {
@@ -76,7 +76,7 @@ func (s *Sherlock) GetUserResultsFromSites() (knownChan, likelyChan, possibleCha
 }
 
 // attempts to
-func (s *Sherlock) TrackUserAcrossSites() (sitesFoundByKnown, sitesFoundByLikely, sitesFoundByPossible []string) {
+func (s *Moriarty) TrackUserAcrossSites() (sitesFoundByKnown, sitesFoundByLikely, sitesFoundByPossible []string) {
 	known, likely, possible, done := s.GetUserResultsFromSites()
 	<-done
 	// we start it right away, then just wait till it's done.

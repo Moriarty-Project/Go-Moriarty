@@ -1,4 +1,4 @@
-package sherlock
+package moriarty
 
 import (
 	"encoding/json"

@@ -1,4 +1,4 @@
-package sherlock
+package moriarty
 
 import (
 	"encoding/json"
@@ -24,7 +24,7 @@ type FolderBasedData struct {
 func (fbd *FolderBasedData) GetData(searchCriteria string) *DataTestResults {
 	// first, we'll create our found data object.
 	found := NewDataTestResults(fbd.Name)
-
+	// TODO: if any file matches the data, I want to add that whole file
 	for key, fileData := range fbd.loadedData {
 		if strings.Compare(key, searchCriteria) == 0 {
 			// if the key is the same as our search criteria, then this likely has a known user? so we'll add that whole row I guess. Hope no one searches "email" or something like that...

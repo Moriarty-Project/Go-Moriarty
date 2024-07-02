@@ -1,4 +1,4 @@
-package sherlock
+package moriarty
 
 import (
 	"testing"
@@ -70,33 +70,33 @@ func BenchmarkWithCache(b *testing.B) {
 		sut.TestSiteHas("Name")
 	}
 }
-func TestSherlockMinimally(t *testing.T) {
+func TestMoriartyMinimally(t *testing.T) {
 	user := NewUserRecordings(nil, nil, nil)
 	user.AddKnownUsername("helloWorld")
 
-	sher, err := NewSherlock(jsonFile)
+	arty, err := NewMoriarty(jsonFile)
 	if err != nil {
 		t.Fatal(err)
 	}
-	sher.AssignNewUser(user)
-	knownSites, likelySites, possibleSites := sher.TrackUserAcrossSites()
+	arty.AssignNewUser(user)
+	knownSites, likelySites, possibleSites := arty.TrackUserAcrossSites()
 
 	assert.Contains(t, knownSites, "Apple Discussions")
 	assert.Equal(t, likelySites, []string{})
 	assert.Equal(t, possibleSites, []string{})
 }
 
-// test sherlock's whole functionality!
-func TestSherlock(t *testing.T) {
+// test Moriarty's whole functionality!
+func TestMoriarty(t *testing.T) {
 	user := NewUserRecordings(nil, nil, nil)
 	user.AddKnownUsername("helloWorld")
 
-	sher, err := NewSherlock(jsonFile)
+	arty, err := NewMoriarty(jsonFile)
 	if err != nil {
 		t.Fatal(err)
 	}
-	sher.AssignNewUser(user)
-	knownSites, likelySites, possibleSites := sher.TrackUserAcrossSites()
+	arty.AssignNewUser(user)
+	knownSites, likelySites, possibleSites := arty.TrackUserAcrossSites()
 	assert.Contains(t, knownSites, "Apple Discussions")
 	assert.Equal(t, likelySites, []string{})
 	assert.Equal(t, possibleSites, []string{})
@@ -104,7 +104,7 @@ func TestSherlock(t *testing.T) {
 	// now test it again but with the names moved to likely
 	user.LikelyUsernames = user.KnownUsernames
 	user.KnownUsernames = []string{}
-	knownSites, likelySites, possibleSites = sher.TrackUserAcrossSites()
+	knownSites, likelySites, possibleSites = arty.TrackUserAcrossSites()
 	assert.Contains(t, likelySites, "Apple Discussions")
 	assert.Equal(t, knownSites, []string{})
 	assert.Equal(t, possibleSites, []string{})
@@ -112,24 +112,24 @@ func TestSherlock(t *testing.T) {
 	// and now with possible
 	user.PossibleUsernames = user.LikelyUsernames
 	user.LikelyUsernames = []string{}
-	knownSites, likelySites, possibleSites = sher.TrackUserAcrossSites()
+	knownSites, likelySites, possibleSites = arty.TrackUserAcrossSites()
 	assert.Contains(t, possibleSites, "Apple Discussions")
 	assert.Equal(t, knownSites, []string{})
 	assert.Equal(t, likelySites, []string{})
 	// AddSiteElement(jsonFile)
 }
 
-func TestSherlockChannels(t *testing.T) {
+func TestMoriartyChannels(t *testing.T) {
 	user := NewUserRecordings(nil, nil, nil)
 	user.AddKnownUsername("helloWorld")
 
-	sher, err := NewSherlock(jsonFile)
+	arty, err := NewMoriarty(jsonFile)
 	if err != nil {
 		t.Fatal(err)
 	}
-	sher.AssignNewUser(user)
+	arty.AssignNewUser(user)
 
-	shouldBeFull, shouldBeEmpty1, shouldBeEmpty2, done := sher.GetUserResultsFromSites()
+	shouldBeFull, shouldBeEmpty1, shouldBeEmpty2, done := arty.GetUserResultsFromSites()
 	<-done
 	full := make([]string, 0, len(shouldBeFull))
 	for len(shouldBeFull) != 0 {
@@ -150,7 +150,7 @@ func TestSherlockChannels(t *testing.T) {
 	// now test it again but with the names moved to likely
 	user.LikelyUsernames = user.KnownUsernames
 	user.KnownUsernames = []string{}
-	shouldBeEmpty1, shouldBeFull, shouldBeEmpty2, done = sher.GetUserResultsFromSites()
+	shouldBeEmpty1, shouldBeFull, shouldBeEmpty2, done = arty.GetUserResultsFromSites()
 	<-done
 	full = make([]string, 0, len(shouldBeFull))
 	for len(shouldBeFull) != 0 {
@@ -171,7 +171,7 @@ func TestSherlockChannels(t *testing.T) {
 	// and now with possible
 	user.PossibleUsernames = user.LikelyUsernames
 	user.LikelyUsernames = []string{}
-	shouldBeEmpty1, shouldBeEmpty2, shouldBeFull, done = sher.GetUserResultsFromSites()
+	shouldBeEmpty1, shouldBeEmpty2, shouldBeFull, done = arty.GetUserResultsFromSites()
 	<-done
 	full = make([]string, 0, len(shouldBeFull))
 	for len(shouldBeFull) != 0 {

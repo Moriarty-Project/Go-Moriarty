@@ -1,0 +1,15 @@
+{
+    "id": 1,
+    "user_first_name": "Firstname",
+    "user_last_name": "Sirname",
+    "user_username": "testEmail@test.com",
+    "user_phone_number": "123-456-7980",
+    "user_country": "Canada",
+    "user_city": "Downtown",
+    "user_middle_name": "M",
+    "user_summary": "I am the zodiac killer",
+    "user_company_name": "example company",
+    "user_gender": "Male",
+    "UserSocialMedia": [
+    ]
+  }

@@ -76,7 +76,7 @@ func (s *Sherlock) GetUserResultsFromSites() (knownChan, likelyChan, possibleCha
 }
 
 // attempts to
-func (s *Sherlock) TrackUser() (sitesFoundByKnown, sitesFoundByLikely, sitesFoundByPossible []string) {
+func (s *Sherlock) TrackUserAcrossSites() (sitesFoundByKnown, sitesFoundByLikely, sitesFoundByPossible []string) {
 	known, likely, possible, done := s.GetUserResultsFromSites()
 	<-done
 	// we start it right away, then just wait till it's done.

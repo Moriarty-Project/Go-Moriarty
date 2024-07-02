@@ -112,6 +112,14 @@ func (dtr *DataTestResults) Add(key string, data ...string) {
 	dtr.InfoFound[key] = append(dtr.InfoFound[key], newData...)
 }
 
+// returns self if values have been found, else, empty
+func (dtr *DataTestResults) NilIfEmpty() *DataTestResults {
+	if len(dtr.InfoFound) == 0 {
+		return nil
+	}
+	return dtr
+}
+
 // tries its best to combine two data test results. Returns nill if anything goes wrong
 func CombineDataTestResults(a *DataTestResults, b *DataTestResults) *DataTestResults {
 	if a == nil {

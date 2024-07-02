@@ -5,9 +5,15 @@ import (
 	"sync"
 )
 
+type DataSearcher interface {
+	GetData(string) *DataTestResults //get the data through this searcher. Nil if nothing is found
+	GetName() string                 //get the name of the data searcher
+	IsNsfw() bool
+}
+
 // this represents the element that actually checks each data clustering.
 type DataToUserTester struct {
-	dataElement    *StringBasedSiteElement
+	dataElement    DataSearcher
 	cache          map[string]*DataTestResults //a cache of the responses from a username
 	nameFoundCache map[string]bool
 	lock           *sync.Mutex
@@ -24,7 +30,7 @@ func NewSiteUserTester(ubse *StringBasedSiteElement) *DataToUserTester {
 func (sut *DataToUserTester) GetSiteName() string {
 	sut.lock.Lock()
 	defer sut.lock.Unlock()
-	return sut.dataElement.Name
+	return sut.dataElement.GetName()
 }
 
 // test all of these with ourselves.
@@ -42,7 +48,7 @@ func (sut *DataToUserTester) TestSiteWith(user *UserRecordings) (fromKnow, fromL
 	fromPossible = []*DataTestResults{}
 	sut.lock.Lock()
 	defer sut.lock.Unlock()
-	if sut.dataElement.IsNSFW && !user.CheckingNSFW {
+	if sut.dataElement.IsNsfw() && !user.CheckingNSFW {
 		// this user doesn't need to be checked on NSFW sites
 		return
 	}
@@ -76,7 +82,7 @@ func (sut *DataToUserTester) TestSiteHas(names ...string) []bool {
 }
 
 func (sut *DataToUserTester) IsNSFW() bool {
-	return sut.dataElement.IsNSFW
+	return sut.dataElement.IsNsfw()
 }
 
 // returns true if any of these usernames are found.

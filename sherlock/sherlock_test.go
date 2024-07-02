@@ -47,7 +47,7 @@ func TestLoadingElements(t *testing.T) {
 	assert.Equal(t, ubse, ubses[0])
 	siteTesters, err := LoadAllSiteUserTesters(jsonFile)
 	assert.NoError(t, err)
-	assert.Equal(t, ubse, siteTesters["1337x"].dataElement)
+	assert.Equal(t, ubse, siteTesters["1337x"].dataElement.(*StringBasedSiteElement))
 
 	sut := siteTesters["1337x"]
 	assert.True(t, sut.TestSiteHasAny("helloWorld"))
@@ -79,7 +79,7 @@ func TestSherlockMinimally(t *testing.T) {
 		t.Fatal(err)
 	}
 	sher.AssignNewUser(user)
-	knownSites, likelySites, possibleSites := sher.TrackUser()
+	knownSites, likelySites, possibleSites := sher.TrackUserAcrossSites()
 
 	assert.Contains(t, knownSites, "Apple Discussions")
 	assert.Equal(t, likelySites, []string{})
@@ -96,7 +96,7 @@ func TestSherlock(t *testing.T) {
 		t.Fatal(err)
 	}
 	sher.AssignNewUser(user)
-	knownSites, likelySites, possibleSites := sher.TrackUser()
+	knownSites, likelySites, possibleSites := sher.TrackUserAcrossSites()
 	assert.Contains(t, knownSites, "Apple Discussions")
 	assert.Equal(t, likelySites, []string{})
 	assert.Equal(t, possibleSites, []string{})
@@ -104,7 +104,7 @@ func TestSherlock(t *testing.T) {
 	// now test it again but with the names moved to likely
 	user.LikelyUsernames = user.KnownUsernames
 	user.KnownUsernames = []string{}
-	knownSites, likelySites, possibleSites = sher.TrackUser()
+	knownSites, likelySites, possibleSites = sher.TrackUserAcrossSites()
 	assert.Contains(t, likelySites, "Apple Discussions")
 	assert.Equal(t, knownSites, []string{})
 	assert.Equal(t, possibleSites, []string{})
@@ -112,7 +112,7 @@ func TestSherlock(t *testing.T) {
 	// and now with possible
 	user.PossibleUsernames = user.LikelyUsernames
 	user.LikelyUsernames = []string{}
-	knownSites, likelySites, possibleSites = sher.TrackUser()
+	knownSites, likelySites, possibleSites = sher.TrackUserAcrossSites()
 	assert.Contains(t, possibleSites, "Apple Discussions")
 	assert.Equal(t, knownSites, []string{})
 	assert.Equal(t, likelySites, []string{})

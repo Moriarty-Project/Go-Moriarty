@@ -95,7 +95,7 @@ type StringBasedSiteElement struct {
 
 // returns nil if nothing is found!
 func (sbse *StringBasedSiteElement) GetData(searchCriteria string) *DataTestResults {
-	if !sbse.TestSiteHas(searchCriteria) {
+	if !sbse.TestHas(searchCriteria) {
 		// we dont have it, so return nil
 		return nil
 	}
@@ -106,10 +106,16 @@ func (sbse *StringBasedSiteElement) GetData(searchCriteria string) *DataTestResu
 	dtr.Add("Found At", fmt.Sprintf(sbse.UrlUsername, searchCriteria))
 	return dtr
 }
+func (sbse *StringBasedSiteElement) GetName() string {
+	return sbse.Name
+}
+func (sbse *StringBasedSiteElement) IsNsfw() bool {
+	return sbse.IsNSFW
+}
 
 // Test if the site has any positive response from this name
-func (sbse *StringBasedSiteElement) TestSiteHas(name string) bool {
-	response, err := http.Get(fmt.Sprintf(sbse.UrlUsername, name))
+func (sbse *StringBasedSiteElement) TestHas(searchCriteria string) bool {
+	response, err := http.Get(fmt.Sprintf(sbse.UrlUsername, searchCriteria))
 	if err != nil {
 		return false
 	}

@@ -25,4 +25,7 @@ func TestFolderBasedData(t *testing.T) {
 	// now we can test searching real data
 	rslt = fbd.GetData("Firstname")
 
+	// just check we get something out of this
+	assert.NotNil(t, rslt)
+
 }

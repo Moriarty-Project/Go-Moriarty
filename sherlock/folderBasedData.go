@@ -25,24 +25,25 @@ func (fbd *FolderBasedData) GetData(searchCriteria string) *DataTestResults {
 	// first, we'll create our found data object.
 	found := NewDataTestResults(fbd.Name)
 
-	for key, vals := range fbd.loadedData {
+	for key, fileData := range fbd.loadedData {
 		if strings.Compare(key, searchCriteria) == 0 {
 			// if the key is the same as our search criteria, then this likely has a known user? so we'll add that whole row I guess. Hope no one searches "email" or something like that...
 
-			found.Add(key, fmt.Sprintf("%v", vals.data))
+			found.Add(key, fmt.Sprintf("%v", fileData.data))
 			continue
 		}
 		// next, we need to try to check the values there.
-		for valKey, valVal := range vals.data {
+		for valKey, valVal := range fileData.data {
 			if strings.Contains(valKey, searchCriteria) {
 				// then this value in this document is named after them.
-				found.Add(valKey, valVal...)
+				found.Add(key, append([]string{valKey}, valVal...)...)
 				// continue if this was about them...
 				continue
 			}
 			// next... each item needs to be checked...
 			for _, subVal := range valVal {
 				if strings.Contains(subVal, searchCriteria) {
+					found.Add(key, valKey, subVal)
 					found.Add(valKey, subVal)
 				}
 			}

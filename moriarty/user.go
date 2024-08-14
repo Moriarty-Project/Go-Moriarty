@@ -8,16 +8,11 @@ var WildcardReplacements []string = []string{"_", "-", " ", ".", ""}
 
 // The recordings of a single user.
 type UserRecordings struct {
-	AccountName       string
-	KnownUsernames    []string
-	KnownEmails       []string
-	KnownSites        []string
-	LikelyUsernames   []string
-	LikelyEmails      []string
-	LikelySites       []string
-	PossibleUsernames []string
-	PossibleEmails    []string
-	PossibleSites     []string
+	AccountName      string
+	KnownNamesets    []*NameSet
+	KnownSites       []string
+	PossibleNamesets []*NameSet
+	PossibleSites    []string
 
 	CheckingNSFW bool
 }
@@ -33,16 +28,11 @@ func NewUserRecordings(name string, usernames, emails, sites []string) *UserReco
 	}
 	// for usernames, we check if there is a wildcard in there. If there is, we replace it with all equivalents.
 	ur := &UserRecordings{
-		KnownUsernames:    []string{},
-		KnownEmails:       emails,
-		KnownSites:        sites,
-		LikelyUsernames:   []string{},
-		LikelyEmails:      []string{},
-		LikelySites:       []string{},
-		PossibleUsernames: []string{},
-		PossibleEmails:    []string{},
-		PossibleSites:     []string{},
-		CheckingNSFW:      false,
+		KnownSites:       sites,
+		KnownNamesets:    []*NameSet{},
+		PossibleSites:    []string{},
+		PossibleNamesets: []*NameSet{},
+		CheckingNSFW:     false,
 	}
 	ur.AddKnownUsername(usernames...)
 	return ur
@@ -51,134 +41,25 @@ func NewUserRecordings(name string, usernames, emails, sites []string) *UserReco
 // adds usernames, as well as smart generating associated usernames
 func (ur *UserRecordings) AddKnownUsername(names ...string) {
 	for _, name := range names {
-		if strings.Contains(name, WildcardPlaceholder) {
-			for _, replacement := range WildcardReplacements {
-				likelyName := strings.Replace(name, WildcardPlaceholder, replacement, 1)
-				ur.LikelyUsernames = append(ur.LikelyUsernames, likelyName)
-				// we add the likely name to usernames to allow for multiple wildcards
-				names = append(names, likelyName)
-			}
-		} else {
-			ur.KnownUsernames = append(ur.KnownUsernames, name)
-		}
+		ur.KnownNamesets = append(ur.KnownNamesets, NewNameSet(name))
 	}
 }
-
-// handles wildcards and items in names.
-func SmartChangeName(names ...string) []string {
+func (ur *UserRecordings) GetAllNames(separators ...string) []string {
+	return append(ur.GetAllKnownNames(separators...), ur.GetAllPossibleNames(separators...)...)
+}
+func (ur *UserRecordings) GetAllKnownNames(separators ...string) []string {
 	ans := []string{}
-	for _, name := range names {
-		var newName string
-		if strings.Contains(name, WildcardPlaceholder) {
-			// there is at least one wildcard in here.
-			for _, replacement := range WildcardReplacements {
-				newName = strings.Replace(name, WildcardPlaceholder, replacement, 1)
-
-				// we add the likely name to usernames to allow for multiple wildcards
-				names = append(names, newName)
-			}
-		} else {
-			// no wildcards.
-			newName = name
-		}
-		// check that we should actually add this new name.
-		if newName == "" {
-			continue
-		}
-
-		// no other filters have effected this, so we can add it.
-		ans = append(ans, newName)
+	for _, nameset := range ur.KnownNamesets {
+		ans = append(ans, nameset.GenerateNames(separators)...)
 	}
 	return ans
 }
-
-// searches for a name like this, and upgrades it wherever possible.
-func (ur *UserRecordings) Upgrade(vagueName string) {
-	// find if we have it, if we do, remove it and put it one type up
-	if arr, removed := removeStringFromArray(ur.LikelyUsernames, vagueName); removed {
-		ur.LikelyUsernames = arr
-		ur.KnownUsernames = append(ur.KnownUsernames, vagueName)
-		return
+func (ur *UserRecordings) GetAllPossibleNames(separators ...string) []string {
+	ans := []string{}
+	for _, nameset := range ur.PossibleNamesets {
+		ans = append(ans, nameset.GenerateNames(separators)...)
 	}
-	if arr, removed := removeStringFromArray(ur.LikelyEmails, vagueName); removed {
-		ur.LikelyEmails = arr
-		ur.KnownEmails = append(ur.KnownEmails, vagueName)
-		return
-	}
-	if arr, removed := removeStringFromArray(ur.PossibleUsernames, vagueName); removed {
-		ur.PossibleUsernames = arr
-		ur.LikelyUsernames = append(ur.LikelyUsernames, vagueName)
-		return
-	}
-	if arr, removed := removeStringFromArray(ur.PossibleEmails, vagueName); removed {
-		ur.PossibleEmails = arr
-		ur.LikelyEmails = append(ur.LikelyEmails, vagueName)
-		return
-	}
-}
-func (ur *UserRecordings) Downgrade(vagueName string) {
-	if arr, removed := removeStringFromArray(ur.KnownUsernames, vagueName); removed {
-		ur.KnownUsernames = arr
-		ur.LikelyUsernames = append(ur.LikelyUsernames, vagueName)
-		return
-	}
-	if arr, removed := removeStringFromArray(ur.KnownEmails, vagueName); removed {
-		ur.KnownEmails = arr
-		ur.LikelyEmails = append(ur.LikelyEmails, vagueName)
-		return
-	}
-	if arr, removed := removeStringFromArray(ur.LikelyUsernames, vagueName); removed {
-		ur.LikelyUsernames = arr
-		ur.PossibleUsernames = append(ur.PossibleUsernames, vagueName)
-		return
-	}
-	if arr, removed := removeStringFromArray(ur.LikelyEmails, vagueName); removed {
-		ur.LikelyEmails = arr
-		ur.PossibleEmails = append(ur.PossibleEmails, vagueName)
-		return
-	}
-	if arr, removed := removeStringFromArray(ur.PossibleUsernames, vagueName); removed {
-		ur.PossibleUsernames = arr
-		return
-	}
-	if arr, removed := removeStringFromArray(ur.PossibleEmails, vagueName); removed {
-		ur.PossibleEmails = arr
-		return
-	}
-}
-func (ur *UserRecordings) Delete(vagueName string) {
-	if arr, removed := removeStringFromArray(ur.KnownUsernames, vagueName); removed {
-		ur.KnownUsernames = arr
-		return
-	}
-	if arr, removed := removeStringFromArray(ur.KnownEmails, vagueName); removed {
-		ur.KnownEmails = arr
-		return
-	}
-	if arr, removed := removeStringFromArray(ur.LikelyUsernames, vagueName); removed {
-		ur.LikelyUsernames = arr
-		return
-	}
-	if arr, removed := removeStringFromArray(ur.LikelyEmails, vagueName); removed {
-		ur.LikelyEmails = arr
-		return
-	}
-	if arr, removed := removeStringFromArray(ur.PossibleUsernames, vagueName); removed {
-		ur.PossibleUsernames = arr
-		return
-	}
-	if arr, removed := removeStringFromArray(ur.PossibleEmails, vagueName); removed {
-		ur.PossibleEmails = arr
-		return
-	}
-}
-func removeStringFromArray(arr []string, str string) (newArr []string, removed bool) {
-	for i := len(arr); i >= 0; i-- {
-		if arr[i] == str {
-			return append(arr[:i], arr[i+1:]...), true
-		}
-	}
-	return arr, false
+	return ans
 }
 
 // this is going to be the return type for all of our data testers

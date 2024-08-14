@@ -34,7 +34,7 @@ func (sut *DataToUserTester) GetSiteName() string {
 }
 
 // test all of these with ourselves.
-func (sut *DataToUserTester) TestSiteWith(user *UserRecordings) (fromKnow, fromLikely, fromPossible []*DataTestResults, err error) {
+func (sut *DataToUserTester) TestSiteWith(user *UserRecordings) (fromKnow, fromPossible []*DataTestResults, err error) {
 	if user == nil {
 		err = fmt.Errorf("no user reference given")
 		return
@@ -44,7 +44,6 @@ func (sut *DataToUserTester) TestSiteWith(user *UserRecordings) (fromKnow, fromL
 		return
 	}
 	fromKnow = []*DataTestResults{}
-	fromLikely = []*DataTestResults{}
 	fromPossible = []*DataTestResults{}
 	sut.lock.Lock()
 	defer sut.lock.Unlock()
@@ -52,17 +51,13 @@ func (sut *DataToUserTester) TestSiteWith(user *UserRecordings) (fromKnow, fromL
 		// this user doesn't need to be checked on NSFW sites
 		return
 	}
-	for _, name := range append(user.KnownUsernames, user.KnownEmails...) {
+	for _, name := range user.GetAllKnownNames() {
 		if sut.unsafeTestSiteHas(name) {
 			fromKnow = append(fromKnow, sut.cache[name])
 		}
 	}
-	for _, name := range append(user.LikelyUsernames, user.LikelyEmails...) {
-		if sut.unsafeTestSiteHas(name) {
-			fromLikely = append(fromLikely, sut.cache[name])
-		}
-	}
-	for _, name := range append(user.PossibleUsernames, user.PossibleEmails...) {
+
+	for _, name := range user.GetAllPossibleNames() {
 		if sut.unsafeTestSiteHas(name) {
 			fromPossible = append(fromPossible, sut.cache[name])
 		}

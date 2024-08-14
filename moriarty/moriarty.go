@@ -25,11 +25,10 @@ func (s *Moriarty) AssignNewUser(user *UserRecordings) {
 }
 
 // get the results from the user as channels
-func (m *Moriarty) GetUserResultsFromSites() (knownChan, likelyChan, possibleChan chan string, doneSignal chan bool) {
+func (m *Moriarty) GetUserResultsFromSites() (knownChan, possibleChan chan string, doneSignal chan bool) {
 	bufferSize := len(m.siteTesters)
 
 	knownChan = make(chan string, bufferSize)
-	likelyChan = make(chan string, bufferSize)
 	possibleChan = make(chan string, bufferSize)
 
 	wg := &sync.WaitGroup{}
@@ -38,10 +37,8 @@ func (m *Moriarty) GetUserResultsFromSites() (knownChan, likelyChan, possibleCha
 
 	// get the important user info setup
 	user := m.trackingUser
-	knownNames := append(user.KnownEmails, user.KnownUsernames...)
-	likelyNames := append(user.LikelyEmails, user.LikelyUsernames...)
-	possibleNames := append(user.PossibleEmails, user.PossibleUsernames...)
-
+	knownNames := user.GetAllKnownNames("")
+	possibleNames := user.GetAllPossibleNames("")
 	// now, we go tracking.
 	fmt.Println("now starting the go routines")
 	for sutName, sut := range m.siteTesters {
@@ -53,9 +50,6 @@ func (m *Moriarty) GetUserResultsFromSites() (knownChan, likelyChan, possibleCha
 		go func(sut *DataToUserTester, sutName string) {
 			if sut.TestSiteHasAny(knownNames...) {
 				knownChan <- sutName
-			}
-			if sut.TestSiteHasAny(likelyNames...) {
-				likelyChan <- sutName
 			}
 			if sut.TestSiteHasAny(possibleNames...) {
 				possibleChan <- sutName
@@ -72,11 +66,11 @@ func (m *Moriarty) GetUserResultsFromSites() (knownChan, likelyChan, possibleCha
 		doneSignal <- true
 	}()
 	fmt.Println("returning function")
-	return knownChan, likelyChan, possibleChan, doneSignal
+	return knownChan, possibleChan, doneSignal
 }
 
 func (m *Moriarty) GetKnownFromSites() (knownChan chan string, doneSignal chan bool) {
-	return m.GetAllSitesFrom(append(m.trackingUser.KnownUsernames, m.trackingUser.KnownEmails...)...)
+	return m.GetAllSitesFrom(m.trackingUser.GetAllKnownNames("")...)
 }
 
 func (m *Moriarty) GetAllSitesFrom(names ...string) (sitesWithNames chan string, doneSignal chan bool) {
@@ -105,21 +99,19 @@ func (m *Moriarty) GetAllSitesFrom(names ...string) (sitesWithNames chan string,
 }
 
 // attempts to
-func (m *Moriarty) TrackUserAcrossSites() (sitesFoundByKnown, sitesFoundByLikely, sitesFoundByPossible []string) {
-	known, likely, possible, done := m.GetUserResultsFromSites()
+func (m *Moriarty) TrackUserAcrossSites() (sitesFoundByKnown, sitesFoundByPossible []string) {
+	known, possible, done := m.GetUserResultsFromSites()
 	<-done
 	// we start it right away, then just wait till it's done.
 	sitesFoundByKnown = make([]string, len(known))
-	sitesFoundByLikely = make([]string, len(likely))
 	sitesFoundByPossible = make([]string, len(possible))
 	wg := &sync.WaitGroup{}
-	wg.Add(3)
+	wg.Add(2)
 	// none of these interact with each other... so we could try paralleling them...
 	go WriteAll(known, sitesFoundByKnown, wg)
-	go WriteAll(likely, sitesFoundByLikely, wg)
 	go WriteAll(possible, sitesFoundByPossible, wg)
 	wg.Wait()
-	return sitesFoundByKnown, sitesFoundByLikely, sitesFoundByPossible
+	return sitesFoundByKnown, sitesFoundByPossible
 }
 
 // writes all new data to the array!

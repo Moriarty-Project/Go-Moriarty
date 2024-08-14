@@ -75,9 +75,38 @@ func (m *Moriarty) GetUserResultsFromSites() (knownChan, likelyChan, possibleCha
 	return knownChan, likelyChan, possibleChan, doneSignal
 }
 
+func (m *Moriarty) GetKnownFromSites() (knownChan chan string, doneSignal chan bool) {
+	return m.GetAllSitesFrom(append(m.trackingUser.KnownUsernames, m.trackingUser.KnownEmails...)...)
+}
+
+func (m *Moriarty) GetAllSitesFrom(names ...string) (sitesWithNames chan string, doneSignal chan bool) {
+	sitesWithNames = make(chan string, len(m.siteTesters))
+	wg := &sync.WaitGroup{}
+	wg.Add(len(m.siteTesters))
+	doneSignal = make(chan bool, 1)
+	for sutName, sut := range m.siteTesters {
+		if sut.IsNSFW() && !m.trackingUser.CheckingNSFW {
+			wg.Done()
+			continue
+			// we aren't checking nsfw sites this time
+		}
+		go func(sut *DataToUserTester, sutName string) {
+			if sut.TestSiteHasAny(names...) {
+				sitesWithNames <- sutName
+			}
+			wg.Done()
+		}(sut, sutName)
+	}
+	go func() {
+		wg.Wait()
+		doneSignal <- true
+	}()
+	return
+}
+
 // attempts to
-func (s *Moriarty) TrackUserAcrossSites() (sitesFoundByKnown, sitesFoundByLikely, sitesFoundByPossible []string) {
-	known, likely, possible, done := s.GetUserResultsFromSites()
+func (m *Moriarty) TrackUserAcrossSites() (sitesFoundByKnown, sitesFoundByLikely, sitesFoundByPossible []string) {
+	known, likely, possible, done := m.GetUserResultsFromSites()
 	<-done
 	// we start it right away, then just wait till it's done.
 	sitesFoundByKnown = make([]string, len(known))
@@ -86,9 +115,9 @@ func (s *Moriarty) TrackUserAcrossSites() (sitesFoundByKnown, sitesFoundByLikely
 	wg := &sync.WaitGroup{}
 	wg.Add(3)
 	// none of these interact with each other... so we could try paralleling them...
-	WriteAll(known, sitesFoundByKnown, wg)
-	WriteAll(likely, sitesFoundByLikely, wg)
-	WriteAll(possible, sitesFoundByPossible, wg)
+	go WriteAll(known, sitesFoundByKnown, wg)
+	go WriteAll(likely, sitesFoundByLikely, wg)
+	go WriteAll(possible, sitesFoundByPossible, wg)
 	wg.Wait()
 	return sitesFoundByKnown, sitesFoundByLikely, sitesFoundByPossible
 }

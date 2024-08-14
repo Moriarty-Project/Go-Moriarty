@@ -1,6 +1,7 @@
 package moriarty
 
 import (
+	"fmt"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -71,7 +72,7 @@ func BenchmarkWithCache(b *testing.B) {
 	}
 }
 func TestMoriartyMinimally(t *testing.T) {
-	user := NewUserRecordings(nil, nil, nil)
+	user := NewUserRecordings("", nil, nil, nil)
 	user.AddKnownUsername("helloWorld")
 
 	arty, err := NewMoriarty(jsonFile)
@@ -88,7 +89,7 @@ func TestMoriartyMinimally(t *testing.T) {
 
 // test Moriarty's whole functionality!
 func TestMoriarty(t *testing.T) {
-	user := NewUserRecordings(nil, nil, nil)
+	user := NewUserRecordings("", nil, nil, nil)
 	user.AddKnownUsername("helloWorld")
 
 	arty, err := NewMoriarty(jsonFile)
@@ -120,7 +121,7 @@ func TestMoriarty(t *testing.T) {
 }
 
 func TestMoriartyChannels(t *testing.T) {
-	user := NewUserRecordings(nil, nil, nil)
+	user := NewUserRecordings("", nil, nil, nil)
 	user.AddKnownUsername("helloWorld")
 
 	arty, err := NewMoriarty(jsonFile)
@@ -188,5 +189,27 @@ func TestMoriartyChannels(t *testing.T) {
 	assert.Contains(t, full, "Apple Discussions")
 	assert.Equal(t, empty1, []string{})
 	assert.Equal(t, empty2, []string{})
+
+}
+
+func TestMoriartyUsability(t *testing.T) {
+	arty, err := NewMoriarty(jsonFile)
+	if err != nil {
+		t.Fatal(err)
+	}
+	arty.AssignNewUser(NewUserRecordings(
+		"jonah",
+		[]string{"Jonah{*}Wilmsmeyer", "wilm8026", "Pyro{*}Hedgehog"},
+		[]string{"jpwilmsmeyer@gmail.com", ""},
+		nil,
+	))
+	known, likely, possible := arty.TrackUserAcrossSites()
+	fmt.Println("Known")
+	fmt.Println(known)
+	fmt.Println("Likely")
+	fmt.Println(likely)
+	fmt.Println("Possible")
+	fmt.Println(possible)
+	fmt.Println("done")
 
 }

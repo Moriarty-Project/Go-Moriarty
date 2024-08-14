@@ -89,7 +89,6 @@ func (sut *DataToUserTester) IsNSFW() bool {
 func (sut *DataToUserTester) TestSiteHasAny(names ...string) bool {
 	sut.lock.Lock()
 	defer sut.lock.Unlock()
-	// time to beat with these is 51.7s. Without is 52.4
 	for _, name := range names {
 		if sut.unsafeTestSiteHas(name) {
 			return true

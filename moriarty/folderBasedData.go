@@ -1,81 +1,81 @@
 package moriarty
 
 import (
-	"encoding/json"
+	"bufio"
+	"bytes"
 	"fmt"
-	"io"
 	"os"
 	"path"
 	"strings"
 )
 
-type dataFound struct {
-	data map[string][]string
-}
-
 // automatically checks folder of data files, attempts to parse it, and get selected user's results.
 type FolderBasedData struct {
-	FolderPath string                //how to get to the folder, where the files are located.
-	Name       string                //name to be associated with this data path
-	loadedData map[string]*dataFound //we keep each loaded file saved for ease of searching.
+	FolderPath string   //how to get to the folder, where the files are located.
+	Name       string   //name to be associated with this data path
+	files      []string //the file paths to each item
 }
 
 // the highest level of scan possible. Goes over all items for their total data reports
 func (fbd *FolderBasedData) GetData(searchCriteria string) *DataTestResults {
 	// first, we'll create our found data object.
-	found := NewDataTestResults(fbd.Name)
-	// TODO: if any file matches the data, I want to add that whole file
-	for key, fileData := range fbd.loadedData {
-		if strings.Compare(key, searchCriteria) == 0 {
-			// if the key is the same as our search criteria, then this likely has a known user? so we'll add that whole row I guess. Hope no one searches "email" or something like that...
+	found := NewDataTestResults(searchCriteria)
 
-			found.Add(key, fmt.Sprintf("%v", fileData.data))
+	// then go through all of the files.
+	for _, filePath := range fbd.files {
+		file, err := fbd.getFileFrom(filePath)
+		if err != nil {
+			// TODO: cover this!
+			panic(err)
+		}
+		defer file.Close()
+		if strings.Contains(filePath, searchCriteria) {
+			//found them in the file name.
+			found.Add("found in file name")
+			found.Add("file name", file.Name())
+			found.Add("file path", filePath)
 			continue
 		}
-		// next, we need to try to check the values there.
-		for valKey, valVal := range fileData.data {
-			if strings.Contains(valKey, searchCriteria) {
-				// then this value in this document is named after them.
-				found.Add(key, append([]string{valKey}, valVal...)...)
-				// continue if this was about them...
-				continue
-			}
-			// next... each item needs to be checked...
-			for _, subVal := range valVal {
-				if strings.Contains(subVal, searchCriteria) {
-					found.Add(key, valKey, subVal)
-					found.Add(valKey, subVal)
-				}
-			}
+		fileReader := bufio.NewReader(file)
+		if SearchBufferFor(fileReader, []byte(searchCriteria)) {
+			found.Add("found in file contents")
+			found.Add("file name", file.Name())
+			found.Add("file path", filePath)
 		}
 	}
 
 	return found.NilIfEmpty()
 }
 
-// load all of the data from a given folder path into this memory.
+// search function to search through an IO buffer for the following keyword, returns true if the keyword is found.
+func SearchBufferFor(data *bufio.Reader, key []byte) bool {
+	readData := make([]byte, len(key))
+	for {
+		// scan ahead until the first character of the key
+		if _, err := data.ReadBytes(key[0]); err != nil {
+			return false
+		}
+		data.UnreadByte()
+		if _, err := data.Read(readData); err != nil {
+			// we hit the end before it could begin
+			return false
+		}
+		if bytes.Equal(key, readData) {
+			// we found the key!
+			return true
+		}
+		// reset the read data
+		readData = make([]byte, len(key))
+	}
+}
+
+// load all of the given files in this folder path into the files list
 func (fbd *FolderBasedData) LoadAllData(folderPath string, ignoredFiles ...string) error {
-	// go to that folderPath, and give it a good bit of work to find it
-	filePaths, err := fbd.getAllFileNames(folderPath)
+	fileNames, err := fbd.getAllFileNames(folderPath, ignoredFiles...)
 	if err != nil {
 		return err
 	}
-	// ok, we've either returned, or we have the dirs
-	// go through all of the files in this directory, and open them. Ignoring sub directories.
-	foundData := false
-	// used to keep track of if we found any data
-	for _, fileName := range filePaths {
-		filePath := path.Join(folderPath, fileName)
-		err = fbd.getDataFromFile(filePath)
-		if err != nil {
-			return err
-		}
-		foundData = true
-	}
-	if !foundData {
-		// nothing was ever found in this folder.
-		return fmt.Errorf("no valid files were found under path '%s'", folderPath)
-	}
+	fbd.files = append(fbd.files, fileNames...)
 	return nil
 }
 
@@ -135,67 +135,10 @@ func (fbd *FolderBasedData) getAllFileNames(folderPath string, ignoredFiles ...s
 		}
 		if !ignoredForReason {
 			// it's passed all tests, so we can count it as valid
-			filePaths = append(filePaths, dir.Name())
+			filePaths = append(filePaths, path.Join(folderPath, dir.Name()))
 		}
 	}
 	return filePaths, nil
-}
-
-/*
-loads the data from that filepath into the loadedData.
-current supported datatypes are json...
-*/
-func (fdb *FolderBasedData) getDataFromFile(filePath string) error {
-	// check if the file ends with a format we can parse...
-	if fdb.loadedData[path.Base(filePath)] != nil {
-		return nil
-	}
-	suffix := path.Ext(filePath)
-
-	// first we need to see if we can open the file
-	file, err := fdb.getFileFrom(filePath)
-	if file != nil {
-		defer file.Close()
-	}
-	if err != nil {
-		return err
-	}
-	// now we need to parse all keywords from the file.
-	dataRetrieved := map[string]interface{}{}
-	dataBytes, err := io.ReadAll(file)
-	if err != nil {
-		return err
-	}
-
-	switch suffix {
-	case ".json":
-		// we need to parse it as a json object.
-		json.Unmarshal(dataBytes, &dataRetrieved)
-	default:
-		return fmt.Errorf("unsupported format %v", suffix)
-	}
-	// we now have data retrieved from the file (hopefully).
-	// lets parse it to strings from the interface, and work from there!
-	found := &dataFound{
-		data: map[string][]string{},
-	}
-	// lets parse it down!
-	for key, val := range dataRetrieved {
-		switch vt := val.(type) {
-		case []string:
-			found.data[key] = vt
-		case []interface{}:
-			found.data[key] = make([]string, 0, len(vt))
-			for _, v := range vt {
-				found.data[key] = append(found.data[key], fmt.Sprintf("%v", v))
-			}
-		default:
-			// do our best to parse it with sprintf doing the legwork...
-			found.data[key] = []string{fmt.Sprintf("%v", vt)}
-		}
-	}
-	fdb.loadedData[path.Base(filePath)] = found
-	return nil
 }
 
 // attempt to get the file. Tries multiple ways to get the file, and with a bit of luck, finds something!

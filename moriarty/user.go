@@ -95,7 +95,6 @@ func (dtr *DataTestResults) Add(key string, data ...string) {
 	}
 	// we check for duplicate data, and disregard that if it's an exact duplicate.
 	// first we'll go over and check that all our data is new
-	newData := make([]string, 0, len(data))
 	for _, d := range data {
 		dataIsNew := true
 		for _, t := range dtr.InfoFound[key] {
@@ -104,12 +103,11 @@ func (dtr *DataTestResults) Add(key string, data ...string) {
 				dataIsNew = false
 				break
 			}
-			if dataIsNew {
-				newData = append(newData, d)
-			}
+		}
+		if dataIsNew {
+			dtr.InfoFound[key] = append(dtr.InfoFound[key], d)
 		}
 	}
-	dtr.InfoFound[key] = append(dtr.InfoFound[key], newData...)
 }
 
 // returns self if values have been found, else, empty

@@ -10,7 +10,6 @@ func TestFolderBasedData(t *testing.T) {
 	fbd := &FolderBasedData{
 		FolderPath: "",
 		Name:       "TestFolder",
-		loadedData: map[string]*dataFound{},
 	}
 	// test while it's empty
 	rslt := fbd.GetData("test")
@@ -27,5 +26,8 @@ func TestFolderBasedData(t *testing.T) {
 
 	// just check we get something out of this
 	assert.NotNil(t, rslt)
+	rslt = fbd.GetData("UserDataDemo")
+	assert.Equal(t, "UserDataDemo", rslt.Name)
+	assert.True(t, rslt.InfoFound["found in file name"] != nil)
 
 }

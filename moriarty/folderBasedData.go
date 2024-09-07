@@ -2,7 +2,6 @@ package moriarty
 
 import (
 	"bufio"
-	"bytes"
 	"fmt"
 	"os"
 	"path"
@@ -71,28 +70,6 @@ func (fbd *FolderBasedData) GetData(searchCriteria string) (*DataTestResults, er
 	}
 
 	return found.NilIfEmpty(), nil
-}
-
-// search function to search through an IO buffer for the following keyword, returns true if the keyword is found.
-func SearchBufferFor(data *bufio.Reader, key []byte) bool {
-	readData := make([]byte, len(key))
-	for {
-		// scan ahead until the first character of the key
-		if _, err := data.ReadBytes(key[0]); err != nil {
-			return false
-		}
-		data.UnreadByte()
-		if _, err := data.Read(readData); err != nil {
-			// we hit the end before it could begin
-			return false
-		}
-		if bytes.Equal(key, readData) {
-			// we found the key!
-			return true
-		}
-		// reset the read data
-		readData = make([]byte, len(key))
-	}
 }
 
 // load all of the given files in this folder path into the files list

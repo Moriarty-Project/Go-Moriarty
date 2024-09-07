@@ -94,17 +94,17 @@ type StringBasedSiteElement struct {
 }
 
 // returns nil if nothing is found!
-func (sbse *StringBasedSiteElement) GetData(searchCriteria string) *DataTestResults {
+func (sbse *StringBasedSiteElement) GetData(searchCriteria string) (*DataTestResults, error) {
 	if !sbse.TestHas(searchCriteria) {
-		// we dont have it, so return nil
-		return nil
+		// we dont have it, so return nil without an error
+		return nil, nil
 	}
 	// we have it!
 	dtr := NewDataTestResults(sbse.Name)
 	dtr.Add("Valid Name", searchCriteria)
 	dtr.Add("Home URL", sbse.UrlHome)
 	dtr.Add("Found At", fmt.Sprintf(sbse.UrlUsername, searchCriteria))
-	return dtr
+	return dtr, nil
 }
 func (sbse *StringBasedSiteElement) GetName() string {
 	return sbse.Name

@@ -6,8 +6,8 @@ import (
 )
 
 type DataSearcher interface {
-	GetData(string) *DataTestResults //get the data through this searcher. Nil if nothing is found
-	GetName() string                 //get the name of the data searcher
+	GetData(string) (*DataTestResults, error) //get the data through this searcher. Nil if nothing is found
+	GetName() string                          //get the name of the data searcher
 	IsNsfw() bool
 }
 
@@ -110,7 +110,10 @@ func (sut *DataToUserTester) unsafeTestSiteHas(name string) bool {
 	if val, hasVal := sut.nameFoundCache[name]; hasVal {
 		return val
 	}
-	found := sut.dataElement.GetData(name)
+	found, err := sut.dataElement.GetData(name)
+	if err != nil {
+		return false
+	}
 	sut.nameFoundCache[name] = found != nil
 	if found != nil {
 		sut.cache[name] = found

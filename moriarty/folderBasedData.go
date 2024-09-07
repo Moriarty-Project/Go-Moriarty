@@ -16,8 +16,35 @@ type FolderBasedData struct {
 	files      []string //the file paths to each item
 }
 
+// if name is empty, it will attempt to create on from the last folder point in the folder path.
+func NewFolderBasedData(folderPath string, name string, ignoredFiles ...string) (*FolderBasedData, error) {
+	// check we can find our way to the folder
+	folderPath, err := getAbsolutePath(folderPath)
+	if err != nil {
+		return nil, err
+	}
+	// next, check the folder path is valid.
+	info, err := os.Stat(folderPath)
+	if err != nil {
+		return nil, err
+	}
+	if !info.IsDir() {
+		return nil, fmt.Errorf("path does not lead to folder")
+	}
+	// check name has a value, if it doesn't, well give it one.
+	if name == "" {
+		name = info.Name()
+	}
+	fbd := &FolderBasedData{
+		FolderPath: folderPath,
+		Name:       name,
+		files:      []string{},
+	}
+	return fbd, fbd.LoadAllData(folderPath, ignoredFiles...)
+}
+
 // the highest level of scan possible. Goes over all items for their total data reports
-func (fbd *FolderBasedData) GetData(searchCriteria string) *DataTestResults {
+func (fbd *FolderBasedData) GetData(searchCriteria string) (*DataTestResults, error) {
 	// first, we'll create our found data object.
 	found := NewDataTestResults(searchCriteria)
 
@@ -25,8 +52,7 @@ func (fbd *FolderBasedData) GetData(searchCriteria string) *DataTestResults {
 	for _, filePath := range fbd.files {
 		file, err := fbd.getFileFrom(filePath)
 		if err != nil {
-			// TODO: cover this!
-			panic(err)
+			return nil, err
 		}
 		defer file.Close()
 		if strings.Contains(filePath, searchCriteria) {
@@ -44,7 +70,7 @@ func (fbd *FolderBasedData) GetData(searchCriteria string) *DataTestResults {
 		}
 	}
 
-	return found.NilIfEmpty()
+	return found.NilIfEmpty(), nil
 }
 
 // search function to search through an IO buffer for the following keyword, returns true if the keyword is found.

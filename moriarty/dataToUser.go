@@ -62,7 +62,8 @@ func (sut *DataToUserTester) TestSiteWith(user *UserRecordings) (fromKnow, fromP
 			fromPossible = append(fromPossible, sut.cache[name])
 		}
 	}
-
+	user.AddKnownFindings(fromKnow...)
+	user.AddPossibleFindings(fromPossible...)
 	return
 }
 func (sut *DataToUserTester) TestSiteHas(names ...string) []bool {

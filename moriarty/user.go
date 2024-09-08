@@ -1,6 +1,9 @@
 package moriarty
 
-import "strings"
+import (
+	"strings"
+	"sync"
+)
 
 const WildcardPlaceholder string = "{*}"
 
@@ -10,56 +13,74 @@ var WildcardReplacements []string = []string{"_", "-", " ", ".", ""}
 type UserRecordings struct {
 	AccountName      string
 	KnownNamesets    []*NameSet
-	KnownSites       []string
+	KnownFindings    []*DataTestResults
 	PossibleNamesets []*NameSet
-	PossibleSites    []string
+	PossibleFindings []*DataTestResults
 
 	CheckingNSFW bool
+	lock         *sync.RWMutex
 }
 
 // generate a user based on known items.
-func NewUserRecordings(name string, usernames, emails, sites []string) *UserRecordings {
-	// TODO: we should go through and remove empty strings.
-	if emails == nil {
-		emails = []string{}
-	}
-	if sites == nil {
-		sites = []string{}
-	}
+func NewUserRecordings(filingName string) *UserRecordings {
 	// for usernames, we check if there is a wildcard in there. If there is, we replace it with all equivalents.
 	ur := &UserRecordings{
-		KnownSites:       sites,
+		AccountName:      filingName,
 		KnownNamesets:    []*NameSet{},
-		PossibleSites:    []string{},
+		KnownFindings:    []*DataTestResults{},
 		PossibleNamesets: []*NameSet{},
+		PossibleFindings: []*DataTestResults{},
 		CheckingNSFW:     false,
+		lock:             &sync.RWMutex{},
 	}
-	ur.AddKnownUsername(usernames...)
 	return ur
 }
 
-// adds usernames, as well as smart generating associated usernames
-func (ur *UserRecordings) AddKnownUsername(names ...string) {
+// adds the following names. If one has a wildcard, that will automatically be handled here.
+func (ur *UserRecordings) AddNames(names ...string) {
+	ur.lock.Lock()
+	defer ur.lock.Unlock()
 	for _, name := range names {
-		ur.KnownNamesets = append(ur.KnownNamesets, NewNameSet(name))
+		ur.KnownNamesets = append(ur.KnownNamesets, NewNameSet(strings.Split(name, WildcardPlaceholder)...))
 	}
 }
+
 func (ur *UserRecordings) GetAllNames(separators ...string) []string {
 	return append(ur.GetAllKnownNames(separators...), ur.GetAllPossibleNames(separators...)...)
 }
 func (ur *UserRecordings) GetAllKnownNames(separators ...string) []string {
+	ur.lock.RLock()
+	defer ur.lock.RUnlock()
 	ans := []string{}
+	if separators == nil {
+		separators = WildcardReplacements
+	}
 	for _, nameset := range ur.KnownNamesets {
 		ans = append(ans, nameset.GenerateNames(separators)...)
 	}
 	return ans
 }
 func (ur *UserRecordings) GetAllPossibleNames(separators ...string) []string {
+	ur.lock.RLock()
+	defer ur.lock.RUnlock()
 	ans := []string{}
+	if separators == nil {
+		separators = WildcardReplacements
+	}
 	for _, nameset := range ur.PossibleNamesets {
 		ans = append(ans, nameset.GenerateNames(separators)...)
 	}
 	return ans
+}
+func (ur *UserRecordings) AddKnownFindings(findings ...*DataTestResults) {
+	ur.lock.Lock()
+	defer ur.lock.Unlock()
+	ur.KnownFindings = append(ur.KnownFindings, findings...)
+}
+func (ur *UserRecordings) AddPossibleFindings(findings ...*DataTestResults) {
+	ur.lock.Lock()
+	defer ur.lock.Unlock()
+	ur.PossibleFindings = append(ur.PossibleFindings, findings...)
 }
 
 // this is going to be the return type for all of our data testers

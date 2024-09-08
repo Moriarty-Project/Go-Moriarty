@@ -39,6 +39,9 @@ func (ns *NameSet) GenerateNames(separators []string) []string {
 	if ns.nameCombos != nil {
 		return ns.nameCombos
 	}
+	if len(ns.nameParts) <= 1 {
+		return ns.nameParts
+	}
 	wg := &sync.WaitGroup{}
 	waitCh := make(chan struct{})
 	ansChan := make(chan string, 255)

@@ -1,7 +1,6 @@
 package moriarty
 
 import (
-	"fmt"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -61,17 +60,17 @@ func TestMoriartyUsability(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	arty.AssignNewUser(NewUserRecordings(
+	user := NewUserRecordings(
 		"jonah",
-		[]string{"Jonah{*}Wilmsmeyer", "wilm8026", "Pyro{*}Hedgehog"},
-		[]string{"jpwilmsmeyer@gmail.com", ""},
-		nil,
-	))
-	known, possible := arty.TrackUserAcrossSites()
-	fmt.Println("Known")
-	fmt.Println(known)
-	fmt.Println("Possible")
-	fmt.Println(possible)
-	fmt.Println("done")
+	)
+	arty.AssignNewUser(user)
+	arty.trackingUser.AddNames("jpwilmsmeyer@gmail.com")
+	assert.Empty(t, user.KnownFindings)
+	assert.Empty(t, user.PossibleFindings)
+	arty.TrackUserAcrossSites()
+
+	// now check we found anything
+	assert.NotEmpty(t, user.KnownFindings)
+	// assert.NotEmpty(t, user.PossibleFindings)
 
 }

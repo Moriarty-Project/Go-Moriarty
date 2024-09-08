@@ -25,37 +25,25 @@ func (s *Moriarty) AssignNewUser(user *UserRecordings) {
 }
 
 // get the results from the user as channels
-func (m *Moriarty) GetUserResultsFromSites() (knownChan, possibleChan chan string, doneSignal chan bool) {
-	bufferSize := len(m.siteTesters)
-
-	knownChan = make(chan string, bufferSize)
-	possibleChan = make(chan string, bufferSize)
-
+func (m *Moriarty) GetUserResultsFromSites() (doneSignal chan (bool)) {
 	wg := &sync.WaitGroup{}
 	wg.Add(len(m.siteTesters))
 	doneSignal = make(chan bool, 1)
 
 	// get the important user info setup
 	user := m.trackingUser
-	knownNames := user.GetAllKnownNames("")
-	possibleNames := user.GetAllPossibleNames("")
 	// now, we go tracking.
 	fmt.Println("now starting the go routines")
-	for sutName, sut := range m.siteTesters {
+	for _, sut := range m.siteTesters {
 		if sut.IsNSFW() && !user.CheckingNSFW {
 			wg.Done()
 			continue
 			// we aren't checking nsfw sites this time
 		}
-		go func(sut *DataToUserTester, sutName string) {
-			if sut.TestSiteHasAny(knownNames...) {
-				knownChan <- sutName
-			}
-			if sut.TestSiteHasAny(possibleNames...) {
-				possibleChan <- sutName
-			}
+		go func(sut *DataToUserTester, user *UserRecordings) {
+			sut.TestSiteWith(user) //automatically adds the logs to the user.
 			wg.Done()
-		}(sut, sutName)
+		}(sut, m.trackingUser)
 	}
 	fmt.Println("all routines have been started!")
 
@@ -66,7 +54,7 @@ func (m *Moriarty) GetUserResultsFromSites() (knownChan, possibleChan chan strin
 		doneSignal <- true
 	}()
 	fmt.Println("returning function")
-	return knownChan, possibleChan, doneSignal
+	return doneSignal
 }
 
 func (m *Moriarty) GetKnownFromSites() (knownChan chan string, doneSignal chan bool) {
@@ -99,19 +87,10 @@ func (m *Moriarty) GetAllSitesFrom(names ...string) (sitesWithNames chan string,
 }
 
 // attempts to
-func (m *Moriarty) TrackUserAcrossSites() (sitesFoundByKnown, sitesFoundByPossible []string) {
-	known, possible, done := m.GetUserResultsFromSites()
+func (m *Moriarty) TrackUserAcrossSites() {
+	done := m.GetUserResultsFromSites()
 	<-done
 	// we start it right away, then just wait till it's done.
-	sitesFoundByKnown = make([]string, len(known))
-	sitesFoundByPossible = make([]string, len(possible))
-	wg := &sync.WaitGroup{}
-	wg.Add(2)
-	// none of these interact with each other... so we could try paralleling them...
-	go WriteAll(known, sitesFoundByKnown, wg)
-	go WriteAll(possible, sitesFoundByPossible, wg)
-	wg.Wait()
-	return sitesFoundByKnown, sitesFoundByPossible
 }
 
 // writes all new data to the array!

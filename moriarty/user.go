@@ -17,8 +17,10 @@ type UserRecordings struct {
 	PossibleNamesets []*NameSet
 	PossibleFindings []*DataTestResults
 
-	CheckingNSFW bool
-	lock         *sync.RWMutex
+	CheckingNSFW          bool
+	lock                  *sync.RWMutex
+	allKnownNamesCache    []string
+	allPossibleNamesCache []string
 }
 
 // generate a user based on known items.
@@ -40,8 +42,17 @@ func NewUserRecordings(filingName string) *UserRecordings {
 func (ur *UserRecordings) AddNames(names ...string) {
 	ur.lock.Lock()
 	defer ur.lock.Unlock()
+	ur.allKnownNamesCache = nil
 	for _, name := range names {
 		ur.KnownNamesets = append(ur.KnownNamesets, NewNameSet(strings.Split(name, WildcardPlaceholder)...))
+	}
+}
+func (ur *UserRecordings) AddPossibleNames(names ...string) {
+	ur.lock.Lock()
+	defer ur.lock.Unlock()
+	ur.allPossibleNamesCache = nil
+	for _, name := range names {
+		ur.PossibleNamesets = append(ur.PossibleNamesets, NewNameSet(strings.Split(name, WildcardPlaceholder)...))
 	}
 }
 
@@ -50,7 +61,11 @@ func (ur *UserRecordings) GetAllNames(separators ...string) []string {
 }
 func (ur *UserRecordings) GetAllKnownNames(separators ...string) []string {
 	ur.lock.RLock()
-	defer ur.lock.RUnlock()
+	if ur.allKnownNamesCache != nil {
+		ur.lock.RUnlock()
+		return ur.allKnownNamesCache
+	}
+
 	ans := []string{}
 	if separators == nil {
 		separators = WildcardReplacements
@@ -58,11 +73,18 @@ func (ur *UserRecordings) GetAllKnownNames(separators ...string) []string {
 	for _, nameset := range ur.KnownNamesets {
 		ans = append(ans, nameset.GenerateNames(separators)...)
 	}
+	ur.lock.RUnlock()
+	ur.lock.Lock()
+	ur.allKnownNamesCache = ans
+	ur.lock.Unlock()
 	return ans
 }
 func (ur *UserRecordings) GetAllPossibleNames(separators ...string) []string {
 	ur.lock.RLock()
-	defer ur.lock.RUnlock()
+	if ur.allPossibleNamesCache != nil {
+		ur.lock.RUnlock()
+		return ur.allPossibleNamesCache
+	}
 	ans := []string{}
 	if separators == nil {
 		separators = WildcardReplacements
@@ -70,6 +92,10 @@ func (ur *UserRecordings) GetAllPossibleNames(separators ...string) []string {
 	for _, nameset := range ur.PossibleNamesets {
 		ans = append(ans, nameset.GenerateNames(separators)...)
 	}
+	ur.lock.RUnlock()
+	ur.lock.Lock()
+	ur.allPossibleNamesCache = ans
+	ur.lock.Unlock()
 	return ans
 }
 func (ur *UserRecordings) AddKnownFindings(findings ...*DataTestResults) {

@@ -58,6 +58,11 @@ func (ns *NameSet) GenerateNames(separators []string) []string {
 	for {
 		select {
 		case <-waitCh:
+			// check if ansChan has anything?
+			for len(ansChan) != 0 {
+				name := <-ansChan
+				ns.nameCombos = append(ns.nameCombos, name)
+			}
 			return ns.nameCombos
 		case name := <-ansChan:
 			ns.nameCombos = append(ns.nameCombos, name)

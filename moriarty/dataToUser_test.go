@@ -24,3 +24,16 @@ func TestSiteHasUser(t *testing.T) {
 	assert.NotEmpty(t, newKnown)
 	assert.Empty(t, newPossible)
 }
+
+func TestFolderSearcher(t *testing.T) {
+	fbd, err := NewFolderBasedData("moriarty/resources/testingData/", "local folder")
+	if err != nil {
+		t.Fatal(err)
+	}
+	dt := NewDataToUserTester(fbd)
+	assert.False(t, dt.IsNSFW())
+	assert.Equal(t, dt.GetSourceName(), "local folder")
+	results := dt.GetSourceResults("testEmail@test.com")
+	assert.NotNil(t, results)
+
+}

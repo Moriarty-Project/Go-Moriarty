@@ -20,9 +20,9 @@ type DataToUserTester struct {
 	lock           *sync.Mutex
 }
 
-func NewDataToUserTester(ubse *StringBasedSiteElement) *DataToUserTester {
+func NewDataToUserTester(source DataSearcher) *DataToUserTester {
 	return &DataToUserTester{
-		dataElement:    ubse,
+		dataElement:    source,
 		cache:          map[string]*DataTestResults{},
 		nameFoundCache: map[string]bool{},
 		lock:           &sync.Mutex{},

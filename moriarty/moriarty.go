@@ -41,7 +41,7 @@ func (m *Moriarty) GetUserResultsFromSites() (doneSignal chan (bool)) {
 			// we aren't checking nsfw sites this time
 		}
 		go func(sut *DataToUserTester, user *UserRecordings) {
-			sut.TestSiteWith(user) //automatically adds the logs to the user.
+			sut.TestSourceWith(user) //automatically adds the logs to the user.
 			wg.Done()
 		}(sut, m.trackingUser)
 	}
@@ -73,7 +73,7 @@ func (m *Moriarty) GetAllSitesFrom(names ...string) (sitesWithNames chan string,
 			// we aren't checking nsfw sites this time
 		}
 		go func(sut *DataToUserTester, sutName string) {
-			if sut.TestSiteHasAny(names...) {
+			if sut.TestSourceHasAny(names...) {
 				sitesWithNames <- sutName
 			}
 			wg.Done()
@@ -109,7 +109,7 @@ func LoadAllSiteUserTesters(filePath string) (map[string]*DataToUserTester, erro
 	// go through all of the ubses, and add them!
 	ans := map[string]*DataToUserTester{}
 	for _, ubse := range ubses {
-		ans[ubse.Name] = NewSiteUserTester(ubse)
+		ans[ubse.Name] = NewDataToUserTester(ubse)
 	}
 
 	return ans, nil

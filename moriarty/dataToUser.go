@@ -20,7 +20,7 @@ type DataToUserTester struct {
 	lock           *sync.Mutex
 }
 
-func NewSiteUserTester(ubse *StringBasedSiteElement) *DataToUserTester {
+func NewDataToUserTester(ubse *StringBasedSiteElement) *DataToUserTester {
 	return &DataToUserTester{
 		dataElement:    ubse,
 		cache:          map[string]*DataTestResults{},
@@ -28,66 +28,66 @@ func NewSiteUserTester(ubse *StringBasedSiteElement) *DataToUserTester {
 		lock:           &sync.Mutex{},
 	}
 }
-func (sut *DataToUserTester) GetSiteName() string {
+func (sut *DataToUserTester) GetSourceName() string {
 	sut.lock.Lock()
 	defer sut.lock.Unlock()
 	return sut.dataElement.GetName()
 }
 
 // test all of these with ourselves.
-func (sut *DataToUserTester) TestSiteWith(user *UserRecordings) (fromKnow, fromPossible []*DataTestResults, err error) {
+func (dt *DataToUserTester) TestSourceWith(user *UserRecordings) (fromKnow, fromPossible []*DataTestResults, err error) {
 	if user == nil {
 		err = fmt.Errorf("no user reference given")
 		return
 	}
-	if sut.dataElement == nil {
-		err = fmt.Errorf("no site reference found")
+	if dt.dataElement == nil {
+		err = fmt.Errorf("no source reference found")
 		return
 	}
 	fromKnow = []*DataTestResults{}
 	fromPossible = []*DataTestResults{}
-	sut.lock.Lock()
-	defer sut.lock.Unlock()
-	if sut.dataElement.IsNsfw() && !user.CheckingNSFW {
-		// this user doesn't need to be checked on NSFW sites
+	dt.lock.Lock()
+	defer dt.lock.Unlock()
+	if dt.dataElement.IsNsfw() && !user.CheckingNSFW {
+		// this user doesn't need to be checked on NSFW sources
 		return
 	}
 	for _, name := range user.GetAllKnownNames() {
-		if sut.unsafeTestSiteHas(name) {
-			fromKnow = append(fromKnow, sut.cache[name])
+		if dt.unsafeTestSourceHas(name) {
+			fromKnow = append(fromKnow, dt.cache[name])
 		}
 	}
 
 	for _, name := range user.GetAllPossibleNames() {
-		if sut.unsafeTestSiteHas(name) {
-			fromPossible = append(fromPossible, sut.cache[name])
+		if dt.unsafeTestSourceHas(name) {
+			fromPossible = append(fromPossible, dt.cache[name])
 		}
 	}
 	user.AddKnownFindings(fromKnow...)
 	user.AddPossibleFindings(fromPossible...)
 	return
 }
-func (sut *DataToUserTester) TestSiteHas(names ...string) []bool {
-	sut.lock.Lock()
-	defer sut.lock.Unlock()
+func (dt *DataToUserTester) TestSourceHas(names ...string) []bool {
+	dt.lock.Lock()
+	defer dt.lock.Unlock()
 	ans := make([]bool, 0, len(names))
 
 	for _, name := range names {
-		ans = append(ans, sut.unsafeTestSiteHas(name))
+		ans = append(ans, dt.unsafeTestSourceHas(name))
 	}
 	return ans
 }
 
-func (sut *DataToUserTester) IsNSFW() bool {
-	return sut.dataElement.IsNsfw()
+func (dt *DataToUserTester) IsNSFW() bool {
+	return dt.dataElement.IsNsfw()
 }
 
 // returns true if any of these usernames are found.
-func (sut *DataToUserTester) TestSiteHasAny(names ...string) bool {
-	sut.lock.Lock()
-	defer sut.lock.Unlock()
+func (dt *DataToUserTester) TestSourceHasAny(names ...string) bool {
+	dt.lock.Lock()
+	defer dt.lock.Unlock()
 	for _, name := range names {
-		if sut.unsafeTestSiteHas(name) {
+		if dt.unsafeTestSourceHas(name) {
 			return true
 		}
 	}
@@ -95,12 +95,12 @@ func (sut *DataToUserTester) TestSiteHasAny(names ...string) bool {
 }
 
 // gets the data test results from
-func (sut *DataToUserTester) GetSiteResults(names ...string) *DataTestResults {
+func (sut *DataToUserTester) GetSourceResults(names ...string) *DataTestResults {
 	sut.lock.Lock()
 	defer sut.lock.Unlock()
 	var ans *DataTestResults
 	for _, name := range names {
-		if sut.unsafeTestSiteHas(name) {
+		if sut.unsafeTestSourceHas(name) {
 			ans = CombineDataTestResults(ans, sut.cache[name])
 		}
 	}
@@ -108,7 +108,7 @@ func (sut *DataToUserTester) GetSiteResults(names ...string) *DataTestResults {
 }
 
 // WARNING: this is not thread safe! use with caution!
-func (sut *DataToUserTester) unsafeTestSiteHas(name string) bool {
+func (sut *DataToUserTester) unsafeTestSourceHas(name string) bool {
 	if val, hasVal := sut.nameFoundCache[name]; hasVal {
 		return val
 	}

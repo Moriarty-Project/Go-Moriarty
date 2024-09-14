@@ -14,10 +14,10 @@ func TestSiteHasUser(t *testing.T) {
 		UnclaimedIfResponseHas: "\u003ctitle\u003eError something went wrong.\u003c/title\u003e",
 		IsNSFW:                 false,
 	}
-	sut := NewSiteUserTester(sbse)
+	sut := NewDataToUserTester(sbse)
 	user := NewUserRecordings("test myself")
 	user.AddNames("Jonah")
-	newKnown, newPossible, err := sut.TestSiteWith(user)
+	newKnown, newPossible, err := sut.TestSourceWith(user)
 	if err != nil {
 		t.Fatal(err)
 	}

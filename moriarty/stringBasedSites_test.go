@@ -14,9 +14,9 @@ func TestSiteCheckWithStatus(t *testing.T) {
 		UnclaimedIfResponseHas: "", //uses the status code, so doesn't matter.
 		IsNSFW:                 false,
 	}
-	sut := NewSiteUserTester(ubse)
-	assert.True(t, sut.TestSiteHas("Name")[0])
-	assert.False(t, sut.TestSiteHas("reallyreallyrarename")[0])
+	sut := NewDataToUserTester(ubse)
+	assert.True(t, sut.TestSourceHas("Name")[0])
+	assert.False(t, sut.TestSourceHas("reallyreallyrarename")[0])
 }
 func TestSiteCheckWithResponse(t *testing.T) {
 	ubse := &StringBasedSiteElement{
@@ -26,9 +26,9 @@ func TestSiteCheckWithResponse(t *testing.T) {
 		UnclaimedIfResponseHas: "The page you tried was not found. You may have used an outdated link or may have typed the address (URL) incorrectly.",
 		IsNSFW:                 false,
 	}
-	sut := NewSiteUserTester(ubse)
-	assert.True(t, sut.TestSiteHas("helloWorld")[0])
-	assert.False(t, sut.TestSiteHas("reallyasjnhnsujkdhnukdskjahjn")[0])
+	sut := NewDataToUserTester(ubse)
+	assert.True(t, sut.TestSourceHas("helloWorld")[0])
+	assert.False(t, sut.TestSourceHas("reallyasjnhnsujkdhnukdskjahjn")[0])
 }
 
 func TestLoadingElements(t *testing.T) {
@@ -47,6 +47,6 @@ func TestLoadingElements(t *testing.T) {
 	assert.Equal(t, ubse, siteTesters["1337x"].dataElement.(*StringBasedSiteElement))
 
 	sut := siteTesters["1337x"]
-	assert.True(t, sut.TestSiteHasAny("helloWorld"))
-	assert.False(t, sut.TestSiteHasAny("reallyasjnhnsujkdhnukdskjahjn"))
+	assert.True(t, sut.TestSourceHasAny("helloWorld"))
+	assert.False(t, sut.TestSourceHasAny("reallyasjnhnsujkdhnukdskjahjn"))
 }

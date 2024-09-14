@@ -12,6 +12,7 @@ type DataSearcher interface {
 }
 
 // this represents the element that actually checks each data clustering.
+// allows for caching of results, among other useful parts.
 type DataToUserTester struct {
 	dataElement    DataSearcher
 	cache          map[string]*DataTestResults //a cache of the responses from a username

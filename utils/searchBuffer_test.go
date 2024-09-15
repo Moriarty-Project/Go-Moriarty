@@ -1,4 +1,4 @@
-package moriarty
+package utils
 
 import (
 	"bufio"
@@ -90,7 +90,7 @@ func TestSearchAny(t *testing.T) {
 
 func getTestFile(t *testing.T) *os.File {
 	filePath := "moriarty/resources/testingData/UserDataDemoFile.json"
-	filePath, err := getAbsolutePath(filePath)
+	filePath, err := GetAbsolutePath(filePath)
 	if err != nil {
 		t.Fatal(err)
 	}

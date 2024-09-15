@@ -1,4 +1,4 @@
-package moriarty
+package utils
 
 import (
 	"strings"

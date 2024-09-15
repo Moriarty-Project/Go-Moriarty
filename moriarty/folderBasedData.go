@@ -1,6 +1,7 @@
 package moriarty
 
 import (
+	"GoMoriarty/utils"
 	"bufio"
 	"fmt"
 	"os"
@@ -18,7 +19,7 @@ type FolderBasedData struct {
 // if name is empty, it will attempt to create on from the last folder point in the folder path.
 func NewFolderBasedData(folderPath string, name string, ignoredFiles ...string) (*FolderBasedData, error) {
 	// check we can find our way to the folder
-	folderPath, err := getAbsolutePath(folderPath)
+	folderPath, err := utils.GetAbsolutePath(folderPath)
 	if err != nil {
 		return nil, err
 	}
@@ -62,7 +63,7 @@ func (fbd *FolderBasedData) GetData(searchCriteria string) (*DataTestResults, er
 			continue
 		}
 		fileReader := bufio.NewReader(file)
-		if SearchBufferFor(fileReader, []byte(searchCriteria)) {
+		if utils.SearchBufferFor(fileReader, []byte(searchCriteria)) {
 			found.Add("found in file contents")
 			found.Add("file name", file.Name())
 			found.Add("file path", filePath)
@@ -82,37 +83,9 @@ func (fbd *FolderBasedData) LoadAllData(folderPath string, ignoredFiles ...strin
 	return nil
 }
 
-// gets the absolute filepath to where ever you need. Attempts multiple things, but if none come back, returns the final error
-// mostly is trying to find the correct file, returning an absolute path is purely by chance
-func getAbsolutePath(to string) (string, error) {
-	_, err := os.Stat(to)
-	if err == nil {
-		return to, nil
-	}
-	// that didn't work
-	// next, try adding the cwd.
-	cwd, err := os.Getwd()
-	if err != nil {
-		return "", err
-	}
-	_, err = os.Stat(path.Join(cwd, to))
-	if err == nil {
-		return path.Join(cwd, to), nil
-	}
-	// I guess we'll try merging them with ..'s until it fits?
-	middle := "../"
-	for i := 0; i < 5 && i < strings.Count(to, "/"); i++ {
-		_, err = os.Stat(path.Join(cwd, middle, to))
-		if err == nil {
-			return path.Join(cwd, middle, to), nil
-		}
-		middle = middle + middle
-	}
-	return "", fmt.Errorf("could not find any path to %v", to)
-}
 func (fbd *FolderBasedData) getAllFileNames(folderPath string, ignoredFiles ...string) ([]string, error) {
 	// go to that folderPath, and give it a good bit of work to find it
-	folderPath, err := getAbsolutePath(folderPath)
+	folderPath, err := utils.GetAbsolutePath(folderPath)
 	if err != nil {
 		return nil, err
 	}
@@ -146,7 +119,7 @@ func (fbd *FolderBasedData) getAllFileNames(folderPath string, ignoredFiles ...s
 
 // attempt to get the file. Tries multiple ways to get the file, and with a bit of luck, finds something!
 func (fdb *FolderBasedData) getFileFrom(filePath string) (*os.File, error) {
-	filePath, err := getAbsolutePath(filePath)
+	filePath, err := utils.GetAbsolutePath(filePath)
 	if err != nil {
 		return nil, err
 	}

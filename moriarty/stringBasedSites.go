@@ -1,6 +1,7 @@
 package moriarty
 
 import (
+	"GoMoriarty/utils"
 	"bufio"
 	"encoding/json"
 	"fmt"
@@ -128,7 +129,7 @@ func (sbse *StringBasedSiteElement) TestHas(searchCriteria string) bool {
 	// check if it was found properly. We do this by checking if it doesn't have the false case string in its body.
 	found := true
 	if sbse.UnclaimedIfResponseHas != "" {
-		found = !SearchBufferFor(bufio.NewReader(response.Body), []byte(sbse.UnclaimedIfResponseHas))
+		found = !utils.SearchBufferFor(bufio.NewReader(response.Body), []byte(sbse.UnclaimedIfResponseHas))
 	}
 	return found
 }

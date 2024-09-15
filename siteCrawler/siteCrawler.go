@@ -1,5 +1,8 @@
 package siteCrawler
 
+/**
+site crawler. Have you ever seen an incremental api endpoint left a little too open? have you wanted to question what was behind it? well now you can!
+*/
 import (
 	"GoMoriarty/utils"
 	"context"
@@ -20,6 +23,7 @@ type SiteCrawler struct {
 	authenticators []SiteAuthenticator            //here should be things like, adding cookies to a request if needed, ect.
 	validators     []func(r *http.Response) error //check to see if it is a valid response
 	cache          *siteCrawlerCache
+	client         *http.Client
 }
 
 func NewSiteCrawler(urlSetter func(string) *requests.Builder, savePath string) (*SiteCrawler, error) {
@@ -45,6 +49,9 @@ func NewBasicSiteCrawler(url, method, savePath string) (*SiteCrawler, error) {
 		},
 		savePath,
 	)
+}
+func (sc *SiteCrawler) AddClient(client *http.Client) {
+	sc.client = client
 }
 func (sc *SiteCrawler) AddAuthenticator(authenticators ...SiteAuthenticator) {
 	sc.authenticators = append(sc.authenticators, authenticators...)
@@ -91,7 +98,8 @@ func (sc *SiteCrawler) Get(val string, savedTo string) (err error) {
 	defer cancelFunc()
 
 	req := sc.urlSetter(val).
-		ToFile(savedTo)
+		ToFile(savedTo).
+		Client(sc.client)
 
 	// add all the auths.
 	for _, auth := range sc.authenticators {

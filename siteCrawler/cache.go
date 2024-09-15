@@ -1,5 +1,8 @@
 package siteCrawler
 
+/**
+cache acts as the cached reference of all saved tests from the crawler. All positive and negative results are stored in here.
+*/
 import (
 	"GoMoriarty/utils"
 	"encoding/json"

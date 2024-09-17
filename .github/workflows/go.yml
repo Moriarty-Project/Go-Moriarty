@@ -21,12 +21,23 @@ jobs:
         go-version: '1.22'
     - name: Build
       run: go build -v ./...
-    
-    - name: Test Site Crawler
-      run: go test -v ./siteCrawler/...
 
-    - name: Test Core
-      run: go test -v ./moriarty/...
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.22.x'
+      - name: Install dependencies
+        run: go get .
+      
+      - name: Test Site Crawler
+        run: go test -v ./siteCrawler/...
+
+      - name: Test Core
+        run: go test -v ./moriarty/...
     
-    - name: Test CLI
-      run: go test -v ./cli/...
+      - name: Test CLI
+        run: go test -v ./cli/...

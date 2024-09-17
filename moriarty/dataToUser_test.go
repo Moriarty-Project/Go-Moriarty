@@ -1,6 +1,7 @@
 package moriarty
 
 import (
+	"GoMoriarty/utils"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -15,7 +16,7 @@ func TestSiteHasUser(t *testing.T) {
 		IsNSFW:                 false,
 	}
 	sut := NewDataToUserTester(sbse)
-	user := NewUserRecordings("test myself")
+	user := utils.NewUserRecordings("test myself")
 	user.AddNames("Jonah")
 	newKnown, newPossible, err := sut.TestSourceWith(user)
 	if err != nil {

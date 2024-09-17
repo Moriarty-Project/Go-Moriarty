@@ -1,13 +1,14 @@
 package moriarty
 
 import (
+	"GoMoriarty/utils"
 	"fmt"
 	"sync"
 )
 
 type DataSearcher interface {
-	GetData(string) (*DataTestResults, error) //get the data through this searcher. Nil if nothing is found
-	GetName() string                          //get the name of the data searcher
+	GetData(string) (*utils.DataTestResults, error) //get the data through this searcher. Nil if nothing is found
+	GetName() string                                //get the name of the data searcher
 	IsNsfw() bool
 }
 
@@ -15,7 +16,7 @@ type DataSearcher interface {
 // allows for caching of results, among other useful parts.
 type DataToUserTester struct {
 	dataElement    DataSearcher
-	cache          map[string]*DataTestResults //a cache of the responses from a username
+	cache          map[string]*utils.DataTestResults //a cache of the responses from a username
 	nameFoundCache map[string]bool
 	lock           *sync.Mutex
 }
@@ -23,7 +24,7 @@ type DataToUserTester struct {
 func NewDataToUserTester(source DataSearcher) *DataToUserTester {
 	return &DataToUserTester{
 		dataElement:    source,
-		cache:          map[string]*DataTestResults{},
+		cache:          map[string]*utils.DataTestResults{},
 		nameFoundCache: map[string]bool{},
 		lock:           &sync.Mutex{},
 	}
@@ -35,7 +36,7 @@ func (sut *DataToUserTester) GetSourceName() string {
 }
 
 // test all of these with ourselves.
-func (dt *DataToUserTester) TestSourceWith(user *UserRecordings) (fromKnow, fromPossible []*DataTestResults, err error) {
+func (dt *DataToUserTester) TestSourceWith(user *utils.UserRecordings) (fromKnow, fromPossible []*utils.DataTestResults, err error) {
 	if user == nil {
 		err = fmt.Errorf("no user reference given")
 		return
@@ -44,8 +45,8 @@ func (dt *DataToUserTester) TestSourceWith(user *UserRecordings) (fromKnow, from
 		err = fmt.Errorf("no source reference found")
 		return
 	}
-	fromKnow = []*DataTestResults{}
-	fromPossible = []*DataTestResults{}
+	fromKnow = []*utils.DataTestResults{}
+	fromPossible = []*utils.DataTestResults{}
 	dt.lock.Lock()
 	defer dt.lock.Unlock()
 	if dt.dataElement.IsNsfw() && !user.CheckingNSFW {
@@ -95,13 +96,13 @@ func (dt *DataToUserTester) TestSourceHasAny(names ...string) bool {
 }
 
 // gets the data test results from
-func (sut *DataToUserTester) GetSourceResults(names ...string) *DataTestResults {
+func (sut *DataToUserTester) GetSourceResults(names ...string) *utils.DataTestResults {
 	sut.lock.Lock()
 	defer sut.lock.Unlock()
-	var ans *DataTestResults
+	var ans *utils.DataTestResults
 	for _, name := range names {
 		if sut.unsafeTestSourceHas(name) {
-			ans = CombineDataTestResults(ans, sut.cache[name])
+			ans = utils.CombineDataTestResults(ans, sut.cache[name])
 		}
 	}
 	return ans

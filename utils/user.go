@@ -1,7 +1,6 @@
-package moriarty
+package utils
 
 import (
-	"GoMoriarty/utils"
 	"strings"
 	"sync"
 )
@@ -13,9 +12,9 @@ var WildcardReplacements []string = []string{"_", "-", " ", ".", ""}
 // The recordings of a single user.
 type UserRecordings struct {
 	AccountName      string
-	KnownNamesets    []*utils.NameSet
+	KnownNamesets    []*NameSet
 	KnownFindings    []*DataTestResults
-	PossibleNamesets []*utils.NameSet
+	PossibleNamesets []*NameSet
 	PossibleFindings []*DataTestResults
 
 	CheckingNSFW          bool
@@ -29,9 +28,9 @@ func NewUserRecordings(filingName string) *UserRecordings {
 	// for usernames, we check if there is a wildcard in there. If there is, we replace it with all equivalents.
 	ur := &UserRecordings{
 		AccountName:      filingName,
-		KnownNamesets:    []*utils.NameSet{},
+		KnownNamesets:    []*NameSet{},
 		KnownFindings:    []*DataTestResults{},
-		PossibleNamesets: []*utils.NameSet{},
+		PossibleNamesets: []*NameSet{},
 		PossibleFindings: []*DataTestResults{},
 		CheckingNSFW:     false,
 		lock:             &sync.RWMutex{},
@@ -45,7 +44,7 @@ func (ur *UserRecordings) AddNames(names ...string) {
 	defer ur.lock.Unlock()
 	ur.allKnownNamesCache = nil
 	for _, name := range names {
-		ur.KnownNamesets = append(ur.KnownNamesets, utils.NewNameSet(strings.Split(name, WildcardPlaceholder)...))
+		ur.KnownNamesets = append(ur.KnownNamesets, NewNameSet(strings.Split(name, WildcardPlaceholder)...))
 	}
 }
 func (ur *UserRecordings) AddPossibleNames(names ...string) {
@@ -53,7 +52,7 @@ func (ur *UserRecordings) AddPossibleNames(names ...string) {
 	defer ur.lock.Unlock()
 	ur.allPossibleNamesCache = nil
 	for _, name := range names {
-		ur.PossibleNamesets = append(ur.PossibleNamesets, utils.NewNameSet(strings.Split(name, WildcardPlaceholder)...))
+		ur.PossibleNamesets = append(ur.PossibleNamesets, NewNameSet(strings.Split(name, WildcardPlaceholder)...))
 	}
 }
 

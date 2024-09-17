@@ -1,13 +1,14 @@
 package moriarty
 
 import (
+	"GoMoriarty/utils"
 	"fmt"
 	"sync"
 )
 
 type Moriarty struct {
 	siteTesters  map[string]*DataToUserTester //the site structures we test against.
-	trackingUser *UserRecordings              // the user profile.
+	trackingUser *utils.UserRecordings        // the user profile.
 }
 
 func NewMoriarty(filePath string) (*Moriarty, error) {
@@ -20,7 +21,7 @@ func NewMoriarty(filePath string) (*Moriarty, error) {
 	}
 	return s, nil
 }
-func (s *Moriarty) AssignNewUser(user *UserRecordings) {
+func (s *Moriarty) AssignNewUser(user *utils.UserRecordings) {
 	s.trackingUser = user
 }
 
@@ -40,7 +41,7 @@ func (m *Moriarty) GetUserResultsFromSites() (doneSignal chan (bool)) {
 			continue
 			// we aren't checking nsfw sites this time
 		}
-		go func(sut *DataToUserTester, user *UserRecordings) {
+		go func(sut *DataToUserTester, user *utils.UserRecordings) {
 			sut.TestSourceWith(user) //automatically adds the logs to the user.
 			wg.Done()
 		}(sut, m.trackingUser)

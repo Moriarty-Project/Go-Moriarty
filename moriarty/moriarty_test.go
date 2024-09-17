@@ -1,9 +1,7 @@
 package moriarty
 
 import (
-	"fmt"
-	"math"
-	"math/big"
+	"GoMoriarty/utils"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -16,7 +14,7 @@ func TestMoriartyUsability(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	user := NewUserRecordings(
+	user := utils.NewUserRecordings(
 		"jonah",
 	)
 	arty.AssignNewUser(user)

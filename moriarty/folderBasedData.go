@@ -44,9 +44,9 @@ func NewFolderBasedData(folderPath string, name string, ignoredFiles ...string) 
 }
 
 // the highest level of scan possible. Goes over all items for their total data reports
-func (fbd *FolderBasedData) GetData(searchCriteria string) (*DataTestResults, error) {
+func (fbd *FolderBasedData) GetData(searchCriteria string) (*utils.DataTestResults, error) {
 	// first, we'll create our found data object.
-	found := NewDataTestResults(searchCriteria)
+	found := utils.NewDataTestResults(searchCriteria)
 
 	// then go through all of the files.
 	for _, filePath := range fbd.files {

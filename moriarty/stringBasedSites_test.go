@@ -35,18 +35,31 @@ func TestLoadingElements(t *testing.T) {
 	ubses, err := LoadAllSiteElements(jsonFile)
 	assert.NoError(t, err)
 	ubse := &StringBasedSiteElement{
-		Name:                   "1337x",
-		UrlHome:                "https://www.1337x.to/",
-		UrlUsername:            "https://www.1337x.to/user/%s/",
-		UnclaimedIfResponseHas: "\u003ctitle\u003eError something went wrong.\u003c/title\u003e",
+		Name:                   "GitHub",
+		UrlHome:                "https://www.github.com/",
+		UrlUsername:            "https://www.github.com/%s",
+		UnclaimedIfResponseHas: "",
 		IsNSFW:                 false,
 	}
-	assert.Equal(t, ubse, ubses[0])
+
+	// github actions have an issue with this site for some reason. So we load it separately here
+	assert.Equal(t,
+		ubses[0],
+		&StringBasedSiteElement{
+			Name:                   "1337x",
+			UrlHome:                "https://www.1337x.to/",
+			UrlUsername:            "https://www.1337x.to/user/%s/",
+			UnclaimedIfResponseHas: "\u003ctitle\u003eError something went wrong.\u003c/title\u003e",
+			IsNSFW:                 false,
+		},
+		"loaded order differs from expected order",
+	)
+
 	siteTesters, err := LoadAllSiteUserTesters(jsonFile)
 	assert.NoError(t, err)
-	assert.Equal(t, ubse, siteTesters["1337x"].dataElement.(*StringBasedSiteElement))
+	assert.Equal(t, ubse, siteTesters["GitHub"].dataElement.(*StringBasedSiteElement))
 
-	sut := siteTesters["1337x"]
-	assert.True(t, sut.TestSourceHasAny("helloWorld"))
+	sut := siteTesters["GitHub"]
+	assert.True(t, sut.TestSourceHasAny("PyroHedgehog"))
 	assert.False(t, sut.TestSourceHasAny("reallyasjnhnsujkdhnukdskjahjn"))
 }

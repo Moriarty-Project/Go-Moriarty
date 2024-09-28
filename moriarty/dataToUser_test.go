@@ -9,15 +9,15 @@ import (
 
 func TestSiteHasUser(t *testing.T) {
 	sbse := &StringBasedSiteElement{
-		Name:                   "1337x",
-		UrlHome:                "https://www.1337x.to/",
-		UrlUsername:            "https://www.1337x.to/user/%s/",
-		UnclaimedIfResponseHas: "\u003ctitle\u003eError something went wrong.\u003c/title\u003e",
+		Name:                   "GitHub",
+		UrlHome:                "https://www.github.com/",
+		UrlUsername:            "https://www.github.com/%s",
+		UnclaimedIfResponseHas: "",
 		IsNSFW:                 false,
 	}
 	sut := NewDataToUserTester(sbse)
 	user := utils.NewUserRecordings("test myself")
-	user.AddNames("Jonah")
+	user.AddNames("PyroHedgehog")
 	newKnown, newPossible, err := sut.TestSourceWith(user)
 	if err != nil {
 		t.Fatal(err)

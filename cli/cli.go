@@ -2,6 +2,7 @@ package MoriartyCLI
 
 import (
 	"GoMoriarty/utils"
+	"strings"
 
 	"github.com/abiosoft/ishell/v2"
 )
@@ -58,6 +59,22 @@ func (cli *MoriartyCLI) cliAddUser(c *ishell.Context) {
 	// TODO: add user functions
 	// a simple series of questions to get the users info, then we'll go from there.
 	// get the name for the user, where to save them, and any known info on them.
+	c.Println("Now Adding a new user!")
+
+	// TODO: get the user file path, check the path is actually valid and wont break things.
+	c.Print("What should this record be called?:")
+	name := c.ReadLine()
+	if !strings.HasSuffix(name, ".json") {
+		name += ".json"
+	}
+	newUser := utils.NewUserRecordings(name)
+	c.Println("are there any known account names? (leave blank for no)")
+	for val := c.ReadLine(); val != ""; val = c.ReadLine() {
+		newUser.AddNames(val)
+	}
+
+	// assuming nothing's caused us to cancel by now.
+	cli.loadedUsers = append(cli.loadedUsers, newUser)
 }
 
 func (cli *MoriartyCLI) cliEditUser(c *ishell.Context) {

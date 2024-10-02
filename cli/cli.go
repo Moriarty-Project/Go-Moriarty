@@ -11,6 +11,7 @@ type MoriartyCLI struct {
 	MainShell     *ishell.Shell
 	loadedUsers   []*utils.UserRecordings //the users we have loaded already
 	unloadedUsers []string                //the names of user profiles we unloaded.
+	scanData      *scanInstance
 }
 
 func NewCLI() *MoriartyCLI {
@@ -19,8 +20,10 @@ func NewCLI() *MoriartyCLI {
 		MainShell:     shell,
 		loadedUsers:   []*utils.UserRecordings{},
 		unloadedUsers: []string{},
+		scanData:      &scanInstance{},
 	}
 	cli.addUserMethods()
+	cli.addScanMethods()
 
 	shell.Println("Welcome to Moriarty!")
 

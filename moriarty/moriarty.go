@@ -50,6 +50,7 @@ func (m *Moriarty) GetUserResultsFromSites() (doneSignal chan (bool)) {
 
 	// add a little waiter function here. This is answers that we're done.
 	go func() {
+		defer close(doneSignal)
 		wg.Wait()
 		fmt.Println("all go routines have finished!\n ")
 		doneSignal <- true

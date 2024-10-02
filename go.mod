@@ -5,6 +5,7 @@ go 1.22.1
 require github.com/stretchr/testify v1.9.0
 
 require (
+	github.com/abiosoft/ishell v2.0.0+incompatible
 	github.com/abiosoft/ishell/v2 v2.0.2 // indirect
 	github.com/abiosoft/readline v0.0.0-20180607040430-155bce2042db // indirect
 	github.com/carlmjohnson/requests v0.24.2 // indirect
